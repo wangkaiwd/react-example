@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import RouterConfig from './router'
 import registerServiceWorker from './registerServiceWorker'
 import 'styles/reset.less'
 import 'styles/container.less'
 
-ReactDOM.render(<App/>, document.getElementById('root'))
+ReactDOM.render(<RouterConfig/>, document.getElementById('root'))
 registerServiceWorker()
