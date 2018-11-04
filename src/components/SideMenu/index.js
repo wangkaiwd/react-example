@@ -9,19 +9,15 @@ class SideMenu extends Component {
           <Link to='/chat'>
             <li>chat</li>
           </Link>
-          {/*<Link to='/chat'>
-            <li>chat</li>
+          <Link to='/formAntd'>
+            <li>FormAntd</li>
           </Link>
-          <Link to='/chat'>
-            <li>chat</li>
+          <Link to='/jsx'>
+            <li>深入jsx</li>
           </Link>
-          <Link to='/chat'>
-            <li>chat</li>
+          <Link to='/fieldsSet'>
+            <li>DynamicFieldSet</li>
           </Link>
-          <Link to='/chat'>
-            <li>chat</li>
-          </Link>*/}
-          <li>内容1</li>
           <li>内容2</li>
           <li>内容3</li>
           <li>内容4</li>

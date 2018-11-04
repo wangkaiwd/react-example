@@ -14,7 +14,7 @@ function MessageList (props) {
 class Chat extends Component {
   state = {
     messages: [],
-    inputMsg: ''
+    inputMsg: '',
   }
   onChange = (e) => {
     const inputMsg = e.target.value
@@ -33,6 +33,7 @@ class Chat extends Component {
     // 2. 在更改value值的时候更新inputMsg
     // react的onChange事件在浏览器中的表现和这个名字不相称，而react通过onChange对用户输入的实时响应处理
     const {inputMsg, messages} = this.state
+
     return (
       <div>
         <Row>

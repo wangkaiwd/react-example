@@ -1,11 +1,12 @@
 @import "vars";
+@import 'mixins';
 
 :global {
   .app {
     display: flex;
     .left-nav {
       width: 100px;
-      li {padding: 0 @space-base;line-height: 1.8;}
+      li {padding: 0 @space-base;line-height: 1.8;.ell;}
     }
     .content {flex: 1;padding: @space-base;}
   }
