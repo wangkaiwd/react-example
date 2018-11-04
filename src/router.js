@@ -1,5 +1,5 @@
 import { HashRouter as Router, Route } from 'react-router-dom'
-import React from 'react'
+import React, { lazy } from 'react'
 import App from './App'
 import Chat from '@/pages/Chat'
 import FormAntd from '@/pages/FormHandle/FormSubmitAntd'
