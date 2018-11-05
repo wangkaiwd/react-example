@@ -128,6 +128,7 @@ export default WrappedDynamicFieldSet
 //   1. 提供受控属性value或其它与valuePropName的值同名的属性
 //   2. 提供onChange事件或trigger的值同名的事件
 //   3. 不能是函数式组件： 函数式组件不能访问this,没有生命周期函数
+// 这里可以结合受控组件和非受控组件来进行帮助理解
 // 关键代码
 // 执行组件的onChange事件
 // handleCurrencyChange = (currency) => {
