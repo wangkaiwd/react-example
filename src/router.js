@@ -5,6 +5,7 @@ import Chat from '@/pages/Chat'
 import FormAntd from '@/pages/FormHandle/FormSubmitAntd'
 import Jsx from '@/pages/Jsx'
 import FieldsSet from '@/pages/FormHandle/AntdForm'
+import TabSelector from '@/pages/tabSelect/tabSelector'
 
 export default () => (
   <Router>
@@ -13,6 +14,7 @@ export default () => (
       <Route path="/formAntd" component={FormAntd}/>
       <Route path="/jsx" component={Jsx}/>
       <Route path="/fieldsSet" component={FieldsSet}/>
+      <Route path="/tabSelector" component={TabSelector}/>
       {/*<Route path="/chat" component={Chat}/>*/}
     </App>
   </Router>

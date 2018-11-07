@@ -18,6 +18,9 @@ class SideMenu extends Component {
           <Link to='/fieldsSet'>
             <li>DynamicFieldSet</li>
           </Link>
+          <Link to='/tabSelector'>
+            <li>tabSelector</li>
+          </Link>
           <li>内容2</li>
           <li>内容3</li>
           <li>内容4</li>

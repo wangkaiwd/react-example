@@ -136,7 +136,6 @@ class FormBuilder extends Component {
     }
 
     const {getFieldDecorator} = this.props.form
-    console.log(element)
     return (
       <FormItem {...formItemProps}>
         {getFieldDecorator(
@@ -147,7 +146,6 @@ class FormBuilder extends Component {
             {element.children || null}
           </element.widget>
         )}
-        <element.widget/>
       </FormItem>
     )
   }
