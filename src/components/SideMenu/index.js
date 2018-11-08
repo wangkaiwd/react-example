@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class SideMenu extends Component {
-  render () {
+  render() {
     return (
       <div className="left-nav">
         <ul>
@@ -20,6 +20,9 @@ class SideMenu extends Component {
           </Link>
           <Link to='/tabSelector'>
             <li>tabSelector</li>
+          </Link>
+          <Link to='/formNest'>
+            <li>formNest</li>
           </Link>
           <li>内容2</li>
           <li>内容3</li>
