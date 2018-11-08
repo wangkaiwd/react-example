@@ -150,3 +150,11 @@ export default WrappedDynamicFieldSet
 //   }
 // }
 // 这样的话，可以在Form中动态获取输入值了
+//   之后出现了问题，在调用重置方法resetFields()时出现问题
+//   加入如下代码解决：
+// static getDerivedStateFromProps(nextProps, prevState) {
+//   if ('value' in nextProps) {
+//     prevState.content = nextProps.value || ''
+//   }
+//   return null
+// }
