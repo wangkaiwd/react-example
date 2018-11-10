@@ -24,6 +24,9 @@ class SideMenu extends Component {
           <Link to='/formNest'>
             <li>formNest</li>
           </Link>
+          <Link to='/mixins'>
+            <li>mixins</li>
+          </Link>
           <li>内容2</li>
           <li>内容3</li>
           <li>内容4</li>
