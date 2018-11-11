@@ -33,6 +33,9 @@ class SideMenu extends Component {
           <Link to='/clock'>
             <li>clock</li>
           </Link>
+          <Link to='/funcChild'>
+            <li>funcChild</li>
+          </Link>
         </ul>
       </div>
     )
