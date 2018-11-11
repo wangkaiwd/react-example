@@ -30,6 +30,9 @@ class SideMenu extends Component {
           <Link to='/comment'>
             <li>comment</li>
           </Link>
+          <Link to='/clock'>
+            <li>clock</li>
+          </Link>
         </ul>
       </div>
     )

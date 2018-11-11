@@ -9,7 +9,7 @@ import TabSelector from '@/pages/tabSelect/tabSelector'
 import FormNest from '@/pages/FormNest/parent'
 import Mixins from '@/pages/mixins/myComponents'
 import Comment from '@/pages/comment/commentBox'
-
+import Clock from '@/pages/Clock/Clock'
 export default () => (
   <Router>
     <App>
@@ -21,6 +21,7 @@ export default () => (
       <Route path="/formNest" component={FormNest} />
       <Route path="/mixins" component={Mixins} />
       <Route path="/comment" component={Comment} />
+      <Route path="/clock" component={Clock} />
     </App>
   </Router>
 )

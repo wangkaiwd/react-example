@@ -7,17 +7,17 @@ class CommentItem extends Component {
     comment: PropTypes.object.isRequired
   }
   render() {
-    const { comment } = this.props
+    const { auth, article } = this.props.comment
     return (
       <div className={styles['comment-item']}>
         <div className={styles.avatar}>
         </div>
         <div className={styles.detail}>
           <div className={styles.auth}>
-            <a href="javascript:;">{comment.auth}</a>
+            <a href="javascript:;">{auth}</a>
           </div>
           <div className={styles.article}>
-            {comment.article}
+            {article}
           </div>
         </div>
       </div>
