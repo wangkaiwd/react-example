@@ -10,12 +10,12 @@ class TabComponent extends Component {
   }
   static defaultProps = {
     options: [],
-    changeTab: () => {},
+    changeTab: () => { },
     activeIndex: -1
   }
 
-  render () {
-    const {options, activeIndex, changeTab} = this.props
+  render() {
+    const { options, activeIndex, changeTab } = this.props
     return (
       <div className="color-list">
         {options.map((item, i) => (
@@ -24,8 +24,8 @@ class TabComponent extends Component {
             onClick={() => changeTab(i)}
             className={`${styles['color-button']} ${i === activeIndex && styles.active}`}
           >
-              {item}
-            </span>
+            {item}
+          </span>
         ))}
       </div>
     )
@@ -38,11 +38,11 @@ class TabSelector extends Component {
   }
   colorList = ['Red', 'Blue', 'Orange']
   changeTab = (i) => {
-    this.setState({activeIndex: i})
+    this.setState({ activeIndex: i })
   }
 
-  render () {
-    const {activeIndex} = this.state
+  render() {
+    const { activeIndex } = this.state
     return (
       <div className={styles.tabSelector}>
         <div className={styles.title}>selector Color:</div>

@@ -8,6 +8,7 @@ import FieldsSet from '@/pages/FormHandle/AntdForm'
 import TabSelector from '@/pages/tabSelect/tabSelector'
 import FormNest from '@/pages/FormNest/parent'
 import Mixins from '@/pages/mixins/myComponents'
+import Comment from '@/pages/comment/commentBox'
 
 export default () => (
   <Router>
@@ -19,6 +20,7 @@ export default () => (
       <Route path="/tabSelector" component={TabSelector} />
       <Route path="/formNest" component={FormNest} />
       <Route path="/mixins" component={Mixins} />
+      <Route path="/comment" component={Comment} />
     </App>
   </Router>
 )

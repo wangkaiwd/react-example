@@ -27,15 +27,9 @@ class SideMenu extends Component {
           <Link to='/mixins'>
             <li>mixins</li>
           </Link>
-          <li>内容2</li>
-          <li>内容3</li>
-          <li>内容4</li>
-          <li>内容5</li>
-          <li>内容6</li>
-          <li>内容7</li>
-          <li>内容8</li>
-          <li>内容9</li>
-          <li>内容10</li>
+          <Link to='/comment'>
+            <li>comment</li>
+          </Link>
         </ul>
       </div>
     )

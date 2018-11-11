@@ -29,6 +29,8 @@ class Chat extends Component {
   }
   handleClick = () => {
     console.log('value', this.input.value)
+    // e.target.value = ''
+    this.input.value = ''
   }
   render() {
     // 双向绑定原理： 1. value: inputMsg 2. onChange={this.onChange}
@@ -60,7 +62,7 @@ class Chat extends Component {
           <Col span={8}>
             {/* 通过DOM操作来获取表单的输入值 */}
             <input placeholder="非受控组件" ref={(input) => this.input = input} type="text" />
-            <Button onClick={this.handleClick}>按钮</Button>
+            <button onClick={this.handleClick}>按钮</button>
           </Col>
         </Row>
       </div>
