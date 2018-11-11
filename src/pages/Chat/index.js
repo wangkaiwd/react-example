@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Col, Input, message, Row, List } from 'antd'
-
+import { Button, Col, Input, message, Row, List, Card } from 'antd'
+import WithTime from '@/pages/Clock/BaseClock'
 function MessageList(props) {
   return (
     <List
@@ -63,6 +63,8 @@ class Chat extends Component {
             {/* 通过DOM操作来获取表单的输入值 */}
             <input placeholder="非受控组件" ref={(input) => this.input = input} type="text" />
             <button onClick={this.handleClick}>按钮</button>
+            <Card title={this.props.time.toLocaleTimeString()}>
+            </Card>
           </Col>
         </Row>
       </div>
@@ -70,7 +72,7 @@ class Chat extends Component {
   }
 }
 
-export default Chat
+export default WithTime(Chat)
 // 受控组件和非受控组件
 //    受控组件：
 //       在HTML中，<input>,<textarea></textarea>和<select></select>这类表单元素会维持自身状态，

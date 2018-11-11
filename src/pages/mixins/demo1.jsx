@@ -37,3 +37,6 @@ const PopupContainer = (Wrapper) => {
   }
 }
 export default PopupContainer;
+
+// 高阶组件的应用场景： 
+//    实现一些通用的逻辑被不同的组件使用，但是它自身并不包含任何ui的展现
