@@ -158,3 +158,59 @@ export default WrappedDynamicFieldSet
 //   }
 //   return null
 // }
+
+
+//  动态数据整理
+//   动态添加和删除某一个复选框生成的列表
+// 数据结构如下：
+// 当内容是单选或者下拉的时候，要渲染对应的子选项
+const list = [
+  {
+    "valNameChs": "尹艳",
+    "valPropId": 0,
+    "propType": "radio",
+    children: [
+      {
+        label: 'select1',
+        value: '1'
+      },
+      {
+        label: 'select2',
+        value: '2'
+      },
+      {
+        label: 'select3',
+        value: '3'
+      }
+    ]
+  },
+  {
+    "valNameChs": "邱艳",
+    "valPropId": 1,
+    "propType": "date"
+  },
+  {
+    "valNameChs": "武丽",
+    "valPropId": 2,
+    "propType": "input"
+  },
+  {
+    "valNameChs": "武丽2",
+    "valPropId": 2,
+    "propType": "select",
+    children: [
+      {
+        label: 'select1',
+        value: '1'
+      },
+      {
+        label: 'select2',
+        value: '2'
+      },
+      {
+        label: 'select3',
+        value: '3'
+      }
+    ]
+  },
+]
