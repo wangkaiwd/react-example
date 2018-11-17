@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
+// TODO: pageKey的totalCount有一些问题需要进行出里，pageChange和pageSizeChange要实现具体的逻辑
+
 // 高阶组件就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件
-const PopupContainer = (Wrapper) => {
+const Paging = (Wrapper) => {
   return class WrapperComponent extends Component {
     state = {
 
@@ -36,7 +38,7 @@ const PopupContainer = (Wrapper) => {
     }
   }
 }
-export default PopupContainer;
+export default Paging;
 
 // 高阶组件的应用场景： 
 //    实现一些通用的逻辑被不同的组件使用，但是它自身并不包含任何ui的展现

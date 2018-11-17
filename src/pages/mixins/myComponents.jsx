@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Divider, Tag } from 'antd'
-import PopupContainer from './demo1'
+import Paging from './Paging'
 const columns = [{
   title: 'Name',
   dataIndex: 'name',
@@ -71,4 +71,4 @@ class myComponents extends Component {
   }
 }
 
-export default PopupContainer(myComponents);
+export default Paging(myComponents);
