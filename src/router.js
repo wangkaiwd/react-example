@@ -11,6 +11,7 @@ import Mixins from '@/pages/mixins/myComponents'
 import Comment from '@/pages/comment/commentBox'
 import Clock from '@/pages/Clock/Clock'
 import AdancedTabSelector from "@/pages/FuncChild/AdvancedTabSelector";
+import FormEdit from '@/pages/FormHandle/FormEdit.jsx'
 export default () => (
   <Router>
     <App>
@@ -24,6 +25,7 @@ export default () => (
       <Route path="/comment" component={Comment} />
       <Route path="/clock" component={Clock} />
       <Route path="/funcChild" component={AdancedTabSelector} />
+      <Route path="/formedit" component={FormEdit} />
     </App>
   </Router>
 )

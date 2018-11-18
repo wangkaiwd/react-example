@@ -36,6 +36,9 @@ class SideMenu extends Component {
           <Link to='/funcChild'>
             <li>funcChild</li>
           </Link>
+          <Link to='/formedit'>
+            <li>FormEdit</li>
+          </Link>
         </ul>
       </div>
     )
