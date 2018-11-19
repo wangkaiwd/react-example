@@ -12,6 +12,7 @@ import Comment from '@/pages/comment/commentBox'
 import Clock from '@/pages/Clock/Clock'
 import AdancedTabSelector from "@/pages/FuncChild/AdvancedTabSelector";
 import FormEdit from '@/pages/FormHandle/FormEdit.jsx'
+import TableRowSpan from '@/pages/TableTechnique/tableRowSpan'
 export default () => (
   <Router>
     <App>
@@ -26,6 +27,7 @@ export default () => (
       <Route path="/clock" component={Clock} />
       <Route path="/funcChild" component={AdancedTabSelector} />
       <Route path="/formedit" component={FormEdit} />
+      <Route path="/tableRowSpan" component={TableRowSpan} />
     </App>
   </Router>
 )
