@@ -61,5 +61,4 @@ class tableRowSpan extends Component {
     );
   }
 }
-
 export default tableRowSpan;

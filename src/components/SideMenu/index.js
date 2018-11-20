@@ -39,6 +39,9 @@ class SideMenu extends Component {
           <Link to='/formedit'>
             <li>FormEdit</li>
           </Link>
+          <Link to='/tableEllipsist'>
+            <li>TableEllipsist</li>
+          </Link>
         </ul>
       </div>
     )

@@ -13,6 +13,7 @@ import Clock from '@/pages/Clock/Clock'
 import AdancedTabSelector from "@/pages/FuncChild/AdvancedTabSelector";
 import FormEdit from '@/pages/FormHandle/FormEdit.jsx'
 import TableRowSpan from '@/pages/TableTechnique/tableRowSpan'
+import TableEllipsist from '@/pages/TableTechnique/tableEllipsist'
 export default () => (
   <Router>
     <App>
@@ -28,6 +29,7 @@ export default () => (
       <Route path="/funcChild" component={AdancedTabSelector} />
       <Route path="/formedit" component={FormEdit} />
       <Route path="/tableRowSpan" component={TableRowSpan} />
+      <Route path="/tableEllipsist" component={TableEllipsist} />
     </App>
   </Router>
 )
