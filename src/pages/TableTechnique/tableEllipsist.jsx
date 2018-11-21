@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Divider, Tag, Tooltip } from 'antd';
+import TabSwitch from './TabSwitch'
 import styles from './example.less'
 const columns = [{
   title: 'Name',
@@ -68,10 +69,19 @@ const data = [{
   tags: ['cool', 'teacher'],
 }];
 class TableEllipsis extends Component {
+  tabConfig = ['商品1', '商品2', '商品3']
   render() {
     return (
       <div>
-        <Table columns={columns} dataSource={data} />
+        <TabSwitch tabConfig={this.tabConfig}>
+          <Table columns={columns} dataSource={data} />
+          <div>
+            我是商品2内容
+          </div>
+          <div>
+            我是商品3内容
+          </div>
+        </TabSwitch>
       </div>
     );
   }

@@ -15,6 +15,7 @@ import FormEdit from '@/pages/FormHandle/FormEdit.jsx'
 import TableRowSpan from '@/pages/TableTechnique/tableRowSpan'
 import TableEllipsist from '@/pages/TableTechnique/tableEllipsist'
 import Example from '@/pages/Testing/Example'
+import TabSwitch from '@/pages/TableTechnique/TabSwitch'
 export default () => (
   <Router>
     <App>
@@ -32,6 +33,7 @@ export default () => (
       <Route path="/tableRowSpan" component={TableRowSpan} />
       <Route path="/tableEllipsist" component={TableEllipsist} />
       <Route path="/example" component={Example} />
+      <Route path="/tabSwitch" component={TabSwitch} />
     </App>
   </Router>
 )

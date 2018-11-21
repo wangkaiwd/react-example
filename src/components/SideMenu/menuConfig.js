@@ -50,6 +50,10 @@ const menuConfig = [
   {
     path: '/example',
     title: 'example'
+  },
+  {
+    path: '/tabSwitch',
+    title: 'tabSwitch'
   }
 ]
 export default menuConfig

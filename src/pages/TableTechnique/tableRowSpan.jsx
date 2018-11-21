@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Divider, Tag } from 'antd';
+import TabSwitch from './TabSwitch'
 const columns = [{
   title: 'Name',
   dataIndex: 'name',
@@ -53,10 +54,16 @@ const data = [{
   tags: ['cool', 'teacher'],
 }];
 class tableRowSpan extends Component {
+  state = {
+
+  }
+  tabConfig = ['商品1', '商品2', '商品3']
   render() {
     return (
       <div>
-        <Table columns={columns} dataSource={data} />
+        <TabSwitch tabConfig={this.tabConfig}>
+          <Table columns={columns} dataSource={data} />
+        </TabSwitch>
       </div>
     );
   }
