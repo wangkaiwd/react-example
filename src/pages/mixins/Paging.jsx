@@ -62,6 +62,7 @@ const Paging = (Wrapper) => {
     render() {
       return (
         <Wrapper
+          resetPageKey={this.resetPageKey}
           pageKey={this.state.pageKey}
           pageOptions={this.pageOptions}
         />

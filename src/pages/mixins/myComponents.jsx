@@ -94,7 +94,11 @@ class myComponents extends Component {
   render() {
     return (
       <div>
-        <FormSearch getList={this.getList} formMeta={this.formMeta} />
+        <FormSearch
+          resetPageKey={this.props.resetPageKey}
+          getList={this.getList}
+          formMeta={this.formMeta}
+        />
         <Table
           columns={columns}
           dataSource={data}

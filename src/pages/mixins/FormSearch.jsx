@@ -7,10 +7,14 @@ class FormSearch extends Component {
   onSearch = (e) => {
     e.preventDefault();
     const queryData = this.props.form.getFieldsValue()
+    if ('date' in queryData) {
+
+    }
     this.props.getList(queryData)
   }
   reset = () => {
-    this.props.form.resetFields();
+    this.props.form.resetFields()
+    this.props.resetPageKey()
     this.props.getList()
   }
   render() {
