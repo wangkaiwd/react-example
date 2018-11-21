@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Table, Divider, Tag } from 'antd'
+import { Table, Divider, Tag, Input, DatePicker } from 'antd'
+const { RangePicker } = DatePicker;
+
 import Paging from './Paging'
+import FormSearch from './FormSearch'
 const columns = [{
   title: 'Name',
   dataIndex: 'name',
@@ -56,10 +59,42 @@ const data = [{
 }];
 
 class myComponents extends Component {
-  showTotal = (total) => `Total ${total} items`
+  state = {
+
+  }
+  formMeta = [
+    {
+      key: 'keywords',
+      label: '关键字',
+      widget: Input,
+      widgetProps: {
+        placeholder: '请输入关键字',
+      },
+      fieldsDecoratorProps: {
+        rules: []
+      }
+    },
+    {
+      key: 'date',
+      label: '时间',
+      widget: RangePicker,
+      widgetProps: {
+        placeholder: ['起始时间', '结束时间']
+      },
+      fieldsDecoratorProps: {
+        rules: []
+      }
+    }
+  ]
+  getList = (queryData = {}) => {
+    const { pageKey } = this.props.pageKey
+    const params = { ...queryData, ...pageKey }
+    console.log('params', params)
+  }
   render() {
     return (
       <div>
+        <FormSearch getList={this.getList} formMeta={this.formMeta} />
         <Table
           columns={columns}
           dataSource={data}

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-// TODO: pageKey的totalCount有一些问题需要进行出里，pageChange和pageSizeChange要实现具体的逻辑
-const pageKey = { pageSize: 10, pageIndex: 1, totalCount: 0 }
 // 高阶组件就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件
 const Paging = (Wrapper) => {
   return class WrapperComponent extends Component {
@@ -12,16 +9,27 @@ const Paging = (Wrapper) => {
         totalCount: 100,
       }
     }
+    pageKey = {
+      pageSize: 10,
+      pageIndex: 1,
+      totalCount: 100,
+    }
+    // 页数改变
     pageChange = (page, pageSize) => {
       const { pageKey } = this.state;
       pageKey.pageIndex = page;
       this.setState({ pageKey })
     }
+    // 每页条数改变
     pageSizeChange = (current, size) => {
       const { pageKey } = this.state;
       pageKey.pageIndex = 1;
       pageKey.pageSize = size;
       this.setState({ pageKey })
+    }
+    // 重置分页条件
+    resetPageKey = () => {
+      this.setState({ pageKey: this.pageKey })
     }
     showTotal = (total) => `Total ${total} items`
     // 这里使用函数和变量的区别： 
@@ -38,10 +46,10 @@ const Paging = (Wrapper) => {
         onShowSizeChange: (current, size) => this.pageSizeChange(current, size),
         showSizeChanger: true,
         showQuickJumper: true,
-        showTotal: this.showTotal,
+        showTotal: () => this.showTotal(totalCount),
       }
     }
-    // 错误方法
+    // 错误方法: 这里会直接赋值，而不是地址
     // pageOptions = {
     //   current: this.pageKey.pageIndex,
     //   total: this.pageKey.totalCount,
@@ -54,7 +62,7 @@ const Paging = (Wrapper) => {
     render() {
       return (
         <Wrapper
-          pageKey={this.pageKey}
+          pageKey={this.state.pageKey}
           pageOptions={this.pageOptions}
         />
       )
