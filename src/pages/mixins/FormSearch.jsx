@@ -7,8 +7,13 @@ class FormSearch extends Component {
   onSearch = (e) => {
     e.preventDefault();
     const queryData = this.props.form.getFieldsValue()
-    if ('date' in queryData) {
-
+    if (queryData.date) {
+      if (Array.isArray(queryData.date)) {
+        queryData.date[0] = Math.round(new Date(queryData.date[0]).getTime() / 1000)
+        queryData.date[1] = Math.round(new Date(queryData.date[1]).getTime() / 1000)
+      } else {
+        queryData.date = Math.round(new Date(queryData.date).getTime() / 1000)
+      }
     }
     this.props.getList(queryData)
   }

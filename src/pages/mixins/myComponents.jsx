@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Table, Divider, Tag, Input, DatePicker } from 'antd'
+import { Table, Divider, Tag, Input, DatePicker, Select } from 'antd'
 const { RangePicker } = DatePicker;
+const Option = Select.Option;
 
 import Paging from './Paging'
 import FormSearch from './FormSearch'
@@ -69,9 +70,6 @@ class myComponents extends Component {
       widget: Input,
       widgetProps: {
         placeholder: '请输入关键字',
-      },
-      fieldsDecoratorProps: {
-        rules: []
       }
     },
     {
@@ -80,10 +78,21 @@ class myComponents extends Component {
       widget: RangePicker,
       widgetProps: {
         placeholder: ['起始时间', '结束时间']
-      },
-      fieldsDecoratorProps: {
-        rules: []
       }
+    },
+    {
+      key: 'status',
+      label: '状态',
+      widget: Select,
+      widgetProps: {
+        style: { width: '200px' },
+        placeholder: '请选择状态'
+      },
+      children: [
+        <Option key={1} value="1">状态1</Option>,
+        <Option key={2} value="2">状态2</Option>,
+        <Option key={3} value="3">状态3</Option>
+      ]
     }
   ]
   getList = (queryData = {}) => {

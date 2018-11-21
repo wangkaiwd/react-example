@@ -46,6 +46,10 @@ const menuConfig = [
   {
     path: '/tableEllipsist',
     title: 'tableEllipsist'
+  },
+  {
+    path: '/example',
+    title: 'example'
   }
 ]
 export default menuConfig
