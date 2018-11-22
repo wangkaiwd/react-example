@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import menuConfig from './menuConfig'
+import menuConfig from '@/config/menuConfig'
 class SideMenu extends Component {
   render() {
     return (
