@@ -10,6 +10,9 @@ const WithTime = (Wrapper) => {
         this.setState({ time: new Date() })
       }, 1000)
     }
+    componentWillUnmount() {
+      clearInterval(this.timerId)
+    }
     render() {
       return (
         <Wrapper time={this.state.time} />

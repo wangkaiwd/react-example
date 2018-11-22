@@ -11,7 +11,7 @@ const menuConfig = [
   },
   {
     path: '/jsx',
-    title: '深入jsx',
+    title: 'deepJsx',
     realPath: 'Jsx'
   },
   {
