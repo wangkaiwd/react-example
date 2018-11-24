@@ -1,190 +1,99 @@
-//create by eddy.zhang
-import React, { Component } from 'react';
-import { Table, Checkbox, Input } from 'antd';
-//可编辑表格
-export default class EditTable extends Component {
-  textChange(e, record) {
-    let rows = [...this.state.data];
-    let row = rows.find(item => item.key == record.key);
-    if (row) {
-      row.displayName = e.target.value;
-    }
-    console.log('rows', rows);
-    this.setState({
-      data: rows
-    })
-  }
-  checkedChange(e, record) {
-    let rows = [...this.state.data];
-    let row = rows.find(item => item.key == record.key);
-    if (row) {
-      row.sortable = e.target.checked;
-    }
-    console.log('rows', rows);
-    this.setState({
-      data: rows
-    })
-  }
-  changeToEdit(record) {
-    let cacheData = [...this.state.editCacheData];
-    cacheData.push({
-      key: record.key,
-      property: record.property,
-      displayName: record.displayName,
-      sortable: record.sortable,
-      dataFormat: record.dataFormat,
-      displayStyle: record.displayStyle,
-      displayOrder: record.displayOrder,
-      fontStyle: record.fontStyle
-    })
-    this.setState({
-      editCacheData: cacheData
-    });
-  }
-  okToDisplay(record) {
-    let cacheData = [...this.state.editCacheData];
-    let index = cacheData.findIndex((e, i, a) => e.key === record.key);
-    cacheData.splice(index, 1);
-    this.setState({
-      editCacheData: cacheData
-    });
-  }
-  cancelToDisplay(record) {
-    let tableData = [...this.state.data];
-    let cacheData = [...this.state.editCacheData];
-    let row = tableData.find(item => item.key == record.key);
-    if (row) {
-      let editRow = cacheData.find(item => item.key == record.key);
-      if (editRow) {
-        row.key = editRow.key;
-        row.property = editRow.property;
-        row.displayName = editRow.displayName;
-        row.sortable = editRow.sortable;
-        row.dataFormat = editRow.dataFormat;
-        row.displayStyle = editRow.displayStyle;
-        row.displayOrder = editRow.displayOrder;
-        row.fontStyle = editRow.fontStyle;
-      }
-    }
-    let index = cacheData.findIndex((e, i, a) => e.key === record.key);
-    cacheData.splice(index, 1);
-    this.setState({
-      data: tableData,
-      editCacheData: cacheData
-    });
-  }
+import React, { Component, Fragment } from 'react';
+import { Table, Divider, Tag, Input } from 'antd'
 
-  constructor(props) {
-    super(props);
-    //全部数据
-    this.state = {
-      data: [{
-        key: '1',
-        property: '属性1',
-        displayName: '显示名称1',
-        sortable: true,
-        dataFormat: '{0}%',
-        displayStyle: "default",
-        displayOrder: 1,
-        fontStyle: 'lightBlue'
-      }, {
-        key: '2',
-        property: '属性2',
-        displayName: '显示名称2',
-        sortable: false,
-        dataFormat: '{0}%',
-        displayStyle: "default",
-        displayOrder: 2,
-        fontStyle: 'lightBlue'
-      }, {
-        key: '3',
-        property: '属性3',
-        displayName: '显示名称3',
-        sortable: false,
-        dataFormat: '{0}%',
-        displayStyle: "default",
-        displayOrder: 3,
-        fontStyle: 'lightBlue'
-      }],
-      //正在编辑数据的缓存以便取消动作
-      editCacheData: [{
-        key: '1',
-        property: '属性1',
-        displayName: '显示名称1',
-        sortable: true,
-        dataFormat: '{0}%',
-        displayStyle: "default",
-        displayOrder: 1,
-        fontStyle: 'lightBlue'
-      }, {
-        key: '2',
-        property: '属性2',
-        displayName: '显示名称2',
-        sortable: false,
-        dataFormat: '{0}%',
-        displayStyle: "default",
-        displayOrder: 2,
-        fontStyle: 'lightBlue'
-      }]
-    }
-    this.columns = [{
-      title: '属性/列',
-      dataIndex: 'property',
+class FormEdit extends Component {
+  state = {
+    data: [{
+      key: '1',
+      name: 'John Brown',
+      age: 32,
+      address: 'New York No. 1 Lake Park',
+      tags: ['nice', 'developer'],
+      isEdit: false
     }, {
-      title: '显示名称',
-      dataIndex: 'displayName',
-      render: (text, record) => {
-        if (this.state.editCacheData.find(item => item.key == record.key)) {
-          //编辑状态
-          return <Input value={text} onChange={(e) => { this.textChange(e, record) }} />
-        }
-        return text
-      }
+      key: '2',
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park',
+      tags: ['loser'],
+      isEdit: false
     }, {
-      title: '是否排序',
-      dataIndex: 'sortable',
-      render: (checked, record) => {
-        if (this.state.editCacheData.find(item => item.key == record.key)) {
-          //编辑状态
-          return <Checkbox checked={checked} onChange={(e) => { this.checkedChange(e, record) }} />
-        }
-        return checked.toString();
-      }
-    }, {
-      title: '数据格式',
-      dataIndex: 'dataFormat',
-    }, {
-      title: '显示样式',
-      dataIndex: 'displayStyle',
-    }, {
-      title: '显示顺序',
-      dataIndex: 'displayOrder',
-    }, {
-      title: '字体样式',
-      dataIndex: 'fontStyle',
-    }, {
-      title: '操作',
-      key: 'action',
-      render: (text, record) => {
-        if (this.state.editCacheData.find(item => item.key == record.key)) {
-          //编辑状态
-          return <span>
-            <a onClick={() => { this.okToDisplay(record) }}>更新</a>
-            <span className="ant-divider" />
-            <a onClick={() => { this.cancelToDisplay(record) }}>取消</a>
-          </span>
-        }
-        //普通状态
-        return <span>
-          <a onClick={() => { this.changeToEdit(record) }}>编辑</a>
-        </span>
-      }
-    }];
+      key: '3',
+      name: 'Joe Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park',
+      tags: ['cool', 'teacher'],
+      isEdit: false
+    }]
   }
-
+  editTable = (i) => {
+    const { data } = this.state
+    data[i].isEdit = !data[i].isEdit
+    this.setState({ data })
+  }
+  handleChange = (e, i, key) => {
+    const { data } = this.state
+    data[i][key] = e.target.value
+    this.setState({ data })
+  }
+  
+  columns = [{
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: (text, record, i) => {
+      return (
+        <Fragment>
+          {record.isEdit ?
+            <Input
+              value={text}
+              onChange={(e) => this.handleChange(e, i, 'name')}
+              placeholder="请输入内容"
+            />
+            :
+            <span>{text}</span>
+          }
+        </Fragment>
+      )
+    }
+  }, {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  }, {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+  }, {
+    title: 'Tags',
+    key: 'tags',
+    dataIndex: 'tags',
+    render: tags => (
+      <span>
+        {tags.map(tag => <Tag color="blue" key={tag}>{tag}</Tag>)}
+      </span>
+    ),
+  }, {
+    title: 'Action',
+    key: 'action',
+    render: (text, record, i) => (
+      <span>
+        <a href="javascript:;" onClick={() => this.editTable(i)}>
+          {record.isEdit ? 'save' : 'edit'}
+        </a>
+        <Divider type="vertical" />
+        <a href="javascript:;">Delete</a>
+      </span>
+    ),
+  }]
   render() {
-    return <div>
-      <Table columns={this.columns} dataSource={this.state.data} pagination={false} />
-    </div>
+    const { data } = this.state
+    return (
+      <div>
+        <Table columns={this.columns} dataSource={data} />
+      </div>
+    );
   }
 }
+
+export default FormEdit;
