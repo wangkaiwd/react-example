@@ -65,9 +65,14 @@ const menuConfig = [
     realPath: 'Testing/Example'
   },
   {
-    routerPath: '/counter',
+    routerPath: '/pureRedux-counter',
     title: 'pureRedux-counter',
     realPath: 'redux/pureRedux'
+  },
+  {
+    routerPath: '/counter',
+    title: 'counter',
+    realPath: 'redux/counter'
   }
 ]
 export default menuConfig
