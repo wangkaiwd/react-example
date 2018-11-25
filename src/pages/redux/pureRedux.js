@@ -31,8 +31,10 @@ function run() {
   function customCount(count) {
     return { type: 'CUSTOM_COUNT', payload: { count } }
   }
+  plusOne = bindActionCreators(plusOne, store.dispatch)
   store.subscribe(() => console.log('state', store.getState()))
-  store.dispatch(plusOne())
+  // through bindActionCreators make operate more easy
+  plusOne()
   store.dispatch(minusOne())
   store.dispatch(customCount(10))
 }
