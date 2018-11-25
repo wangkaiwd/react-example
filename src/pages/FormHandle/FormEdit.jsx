@@ -36,7 +36,7 @@ class FormEdit extends Component {
     data[i][key] = e.target.value
     this.setState({ data })
   }
-  
+
   columns = [{
     title: 'Name',
     dataIndex: 'name',

@@ -8,8 +8,8 @@ class SideMenu extends Component {
         <ul>
           {menuConfig.map(menu => (
             <NavLink
-              to={menu.path}
-              key={menu.path}
+              to={menu.routerPath}
+              key={menu.realPath}
               activeStyle={{
                 fontWeight: "bold",
                 color: "red"
