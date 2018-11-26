@@ -73,6 +73,11 @@ const menuConfig = [
     routerPath: '/counter',
     title: 'counter',
     realPath: 'redux/counter'
+  },
+  {
+    routerPath: '/dialog',
+    title: 'portalDialog',
+    realPath: 'portal-sample'
   }
-]
-export default menuConfig
+];
+export default menuConfig;
