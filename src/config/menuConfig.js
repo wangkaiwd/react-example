@@ -1,68 +1,78 @@
 const menuConfig = [
   {
-    path: '/chat',
+    routerPath: '/chat',
     title: 'chat',
     realPath: 'Chat'
   },
   {
-    path: '/formAntd',
+    routerPath: '/formAntd',
     title: 'FormAntd',
     realPath: 'FormHandle/AntdForm'
   },
   {
-    path: '/jsx',
+    routerPath: '/jsx',
     title: 'deepJsx',
     realPath: 'Jsx'
   },
   {
-    path: '/fieldsSet',
+    routerPath: '/fieldsSet',
     title: 'DynamicFieldSet',
     realPath: 'FormHandle/FormSubmitAntd'
   },
   {
-    path: '/tabSelector',
+    routerPath: '/tabSelector',
     title: 'tabSelector',
     realPath: 'tabSelect/tabSelector'
   },
   {
-    path: '/formNest',
+    routerPath: '/formNest',
     title: 'formNest',
     realPath: 'FormNest/parent'
   },
   {
-    path: '/mixins',
+    routerPath: '/mixins',
     title: 'mixins',
     realPath: 'mixins/myComponents'
   },
   {
-    path: '/comment',
+    routerPath: '/comment',
     title: 'comment',
     realPath: 'comment/commentBox'
   },
   {
-    path: '/clock',
+    routerPath: '/clock',
     title: 'clock',
     realPath: 'Clock/Clock'
   },
   {
-    path: '/funcChild',
+    routerPath: '/funcChild',
     title: 'funcChild',
     realPath: 'FuncChild/AdvancedTabSelector'
   },
   {
-    path: '/formedit',
+    routerPath: '/formedit',
     title: 'formedit',
     realPath: 'FormHandle/FormEdit'
   },
   {
-    path: '/tableEllipsist',
+    routerPath: '/tableEllipsist',
     title: 'tableEllipsist',
     realPath: 'TableTechnique/tableEllipsist'
   },
   {
-    path: '/example',
+    routerPath: '/example',
     title: 'example',
     realPath: 'Testing/Example'
+  },
+  {
+    routerPath: '/pureRedux-counter',
+    title: 'pureRedux-counter',
+    realPath: 'redux/pureRedux'
+  },
+  {
+    routerPath: '/counter',
+    title: 'counter',
+    realPath: 'redux/counter'
   }
 ]
 export default menuConfig

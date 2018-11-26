@@ -13,7 +13,7 @@ export default () => (
       <Suspense fallback={<Loading />}>
         <Switch>
           {menuConfig.map(menu => (
-            <Route key={menu.path} path={menu.path} component={getComponent(menu.realPath)} />
+            <Route key={menu.realPath} path={menu.routerPath} component={getComponent(menu.realPath)} />
           ))}
         </Switch>
       </Suspense>
