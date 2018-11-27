@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'antd';
 import styles from './index.less';
-// child： react元素，container: dom元素
+// 插槽：portals
+// Portals提供了一种很好的方法，将子节点渲染到父组件DOM层次结构之外的DOM节点
+// child： 任何可渲染的react子元素， 如一个元素，字符串或片段(fragment)
+// container: dom元素
 // ReactDOM.createPortal(child, container);
+// 典型用例： 当父组件有overflow: hidden或z-index样式，但你需要子组件能够在视觉上跳出其容器。例如，对话框、hovercards以及提示框
 class PortalSample extends Component {
   state = {
     visible: false
@@ -33,8 +37,6 @@ class PortalSample extends Component {
     if (!visible) {
       return this.renderButton();
     }
-    // child: react元素，container: DOM元素
-    // ReactDOM.createPortal(child,container)
     return ReactDOM.createPortal(this.renderDialog(), document.body);
   }
 }

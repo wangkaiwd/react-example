@@ -78,6 +78,11 @@ const menuConfig = [
     routerPath: '/dialog',
     title: 'portalDialog',
     realPath: 'portal-sample'
+  },
+  {
+    routerPath: '/officialDialog',
+    title: 'official-dialog',
+    realPath: 'portal-sample/officialParent'
   }
 ];
 export default menuConfig;
