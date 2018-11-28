@@ -12,7 +12,7 @@ class Modal extends Component {
   }
   createModal = () => {
     document.body.appendChild(this.el)
-    this.el.className = 'my-modal'
+    this.el.classList.add = 'my-modal'
   }
   render() {
     return ReactDOM.createPortal(
