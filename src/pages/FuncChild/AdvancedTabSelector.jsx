@@ -106,8 +106,3 @@ class UseSelector extends Component {
   }
 }
 export default UseSelector;
-
-// <AdvancedTabSelector 
-//  onChange={}
-//  options=[]
-// />
