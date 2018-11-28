@@ -49,7 +49,6 @@ class OfficialParent extends Component {
               </Row>
             </Modal>
           }
-
         </div>
       </div>
     );
