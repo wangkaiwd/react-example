@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import { Button } from 'antd'
+import { Button, Col, Row } from 'antd'
 import styles from './officialParent.less'
 class Modal extends Component {
   el = document.createElement('div')
@@ -12,9 +12,10 @@ class Modal extends Component {
   }
   createModal = () => {
     document.body.appendChild(this.el)
-    this.el.classList.add = 'my-modal'
+    this.el.classList.add(styles['my-modal'])
   }
   render() {
+    // 将this.props.children这个react元素放到我们创建的dom(this.el)中
     return ReactDOM.createPortal(
       this.props.children,
       this.el
@@ -41,9 +42,14 @@ class OfficialParent extends Component {
           {
             visible &&
             <Modal>
-              <Button onClick={this.closeModal}>点击关闭</Button>
+              <Row type="flex" justify="end">
+                <Col>
+                  <Button type="primary" onClick={this.closeModal}>点击关闭</Button>
+                </Col>
+              </Row>
             </Modal>
           }
+
         </div>
       </div>
     );
