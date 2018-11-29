@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import PropTypes from "prop-types";
 import styles from './advancedTabSelector.less'
-
+const imgageConfig = {
+  cow: 'https://uploads.codesandbox.io/uploads/user/91e44e0f-7b6f-4393-ae82-5192a414ab1e/jJAv-cow.png',
+  elephant: 'https://uploads.codesandbox.io/uploads/user/91e44e0f-7b6f-4393-ae82-5192a414ab1e/nHjH-elephant.png',
+  tiger: 'https://uploads.codesandbox.io/uploads/user/91e44e0f-7b6f-4393-ae82-5192a414ab1e/wbwH-tiger.png'
+}
 class AdvancedTabSelector extends Component {
   static propTypes = {
     // 调用组件时要传入的一个配置项，可以给定一个默认值
@@ -75,7 +79,7 @@ class UseSelector extends Component {
   }
   createAnimal = (value) => {
     return (
-      <img width="100px" src={require(`../../../images/${value}.png`)} alt="" />
+      <img src={imgageConfig[value]} alt="" />
     )
   }
   onChange = (value) => {
