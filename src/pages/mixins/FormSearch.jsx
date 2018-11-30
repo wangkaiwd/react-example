@@ -8,7 +8,7 @@ class FormSearch extends Component {
     e.preventDefault();
     const queryData = this.props.form.getFieldsValue()
     if (queryData.date) {
-      if (Array.isArray(queryData.date)) {
+      if (Array.isArray(queryData.date)) { // 处理时间
         queryData.date[0] = Math.round(new Date(queryData.date[0]).getTime() / 1000)
         queryData.date[1] = Math.round(new Date(queryData.date[1]).getTime() / 1000)
       } else {
@@ -28,7 +28,10 @@ class FormSearch extends Component {
       <div>
         <Form onSubmit={this.onSearch} layout="inline">
           {this.props.formMeta.map(item => (
-            <FormItem key={item.key} label={item.label}>
+            <FormItem
+              key={item.key}
+              label={item.label}
+            >
               {getFieldDecorator(item.key, {
                 ...item.fieldsDecoratorProps
               })(

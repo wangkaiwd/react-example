@@ -5,11 +5,11 @@ import { Col, Form, Icon, Row, Tooltip } from 'antd'
 const FormItem = Form.Item
 
 const defaultFormItemLayout = {
-  labelCol: {span: 8},
-  wrapperCol: {span: 16}
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 }
 }
 
-function pickProps (source, props) {
+function pickProps(source, props) {
   const target = {}
   props.forEach(prop => {
     if (prop in source) target[prop] = source[prop]
@@ -19,7 +19,7 @@ function pickProps (source, props) {
 
 let ID_SEED = 0
 
-function getId () {
+function getId() {
   ID_SEED += 1
   return `form_builder_id_${ID_SEED}`
 }
@@ -36,17 +36,17 @@ class FormBuilder extends Component {
     one: false
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.renderElement = this.renderElement.bind(this)
   }
 
-  getMeta () {
-    const {meta} = this.props
-    return meta.elements ? meta : {elements: [meta]}
+  getMeta() {
+    const { meta } = this.props
+    return meta.elements ? meta : { elements: [meta] }
   }
 
-  renderElement (element) {
+  renderElement(element) {
     const meta = this.getMeta()
 
     // Handle form item props
@@ -55,12 +55,12 @@ class FormBuilder extends Component {
         {element.label}
         <Tooltip title={element.tooltip}>
           {' '}
-          <Icon type="question-circle-o"/>
+          <Icon type="question-circle-o" />
         </Tooltip>
       </span>
     ) : (
-      element.label
-    )
+        element.label
+      )
 
     const formItemProps = {
       key: element.key,
@@ -75,8 +75,7 @@ class FormBuilder extends Component {
         'wrapperCol',
         'colon',
         'hasFeedback',
-        'validateStatus',
-        'hasFeedback'
+        'validateStatus'
       ]),
       ...element.formItemProps
     }
@@ -97,7 +96,7 @@ class FormBuilder extends Component {
         {
           required: true,
           message: `${element.label ||
-          element.key} is required.` // default to English, if needs localization, pass message to it.
+            element.key} is required.` // default to English, if needs localization, pass message to it.
         }
       ]
     }
@@ -135,7 +134,7 @@ class FormBuilder extends Component {
       // widgetProps.id = formItemProps.id = getId();
     }
 
-    const {getFieldDecorator} = this.props.form
+    const { getFieldDecorator } = this.props.form
     return (
       <FormItem {...formItemProps}>
         {getFieldDecorator(
@@ -150,7 +149,7 @@ class FormBuilder extends Component {
     )
   }
 
-  renderLayout (elements) {
+  renderLayout(elements) {
     // Layout the form in columns
     const columns = this.props.meta.columns || 1
     if (columns === 1) return elements
@@ -175,7 +174,7 @@ class FormBuilder extends Component {
     return rows
   }
 
-  render () {
+  render() {
     return this.renderLayout(
       this.getMeta().elements.map(this.renderElement)
     )

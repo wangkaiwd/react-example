@@ -83,6 +83,11 @@ const menuConfig = [
     routerPath: '/officialDialog',
     title: 'official-dialog',
     realPath: 'portal-sample/officialParent'
+  },
+  {
+    routerPath: '/redux',
+    title: 'asyncAction',
+    realPath: 'redux/asyncFunc'
   }
 ];
 export default menuConfig;
