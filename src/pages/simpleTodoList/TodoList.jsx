@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Button, Row, Col } from 'antd'
 import ListItem from './ListItem'
+// 为什么在获取state里的值要浅拷贝
 class TodoList extends Component {
   state = {
     value: '',
@@ -8,12 +9,17 @@ class TodoList extends Component {
   }
   key = 1
   addList = () => {
-    const { value, list } = this.state
-    list.push({ key: this.key++, title: value })
-    this.setState({ list, value: '' })
+    this.setState((prevSate) => ({
+      list: [
+        ...prevSate.list,
+        { key: this.key++, title: prevSate.value }
+      ],
+      value: ''
+    }))
   }
   handleChange = (e) => {
-    this.setState({ value: e.target.value })
+    const value = e.target.value
+    this.setState(() => ({ value }))
   }
   handleKeyUp = (e) => {
     if (e.key === 'Enter') {
@@ -21,9 +27,11 @@ class TodoList extends Component {
     }
   }
   deleteList = (index) => {
-    const { list } = this.state
-    list.splice(index, 1)
-    this.setState({ list })
+    this.setState((prevSate) => {
+      const list = [...prevSate.list]
+      list.splice(index, 1)
+      return { list }
+    })
   }
   render() {
     const { list, value } = this.state
