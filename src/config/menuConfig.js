@@ -88,6 +88,11 @@ const menuConfig = [
     routerPath: '/redux',
     title: 'asyncAction',
     realPath: 'redux/asyncFunc'
+  },
+  {
+    routerPath: '/simpleTodoList',
+    title: 's-todoList',
+    realPath: 'simpleTodoList/TodoList'
   }
 ];
 export default menuConfig;

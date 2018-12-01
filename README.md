@@ -1,4 +1,9 @@
 ## react-demo
+### `react`项目结构理解
+#### 1. `pwa`和`manifest.json`以及`serviceWorker`
+#### 2. 为什么每一个组件中都要引入`React`
+#### 3. `JSX`语法深入理解
+#### 4. `ReactDOM`的作用
 
 ### `antDesign`使用小节
 #### 1. 表格内容一行显示，超出指定宽度后显示...
