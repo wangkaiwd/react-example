@@ -8,6 +8,13 @@ class ListItem extends Component {
     }
     return null
   }
+  // 进行性能优化，但是对应的开发者工具并没有做出正确的提示
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.list !== this.props.list) {
+      return true
+    }
+    return false
+  }
   renderList = () => {
     const { list, deleteList } = this.props
     return (
@@ -24,12 +31,20 @@ class ListItem extends Component {
     )
   }
   render() {
+    console.log('child render');
     return (
       <Fragment>
         {this.emptyData()}
         {this.renderList()}
       </Fragment>
     );
+  }
+  // 1. 一个组件要从父组件接收参数
+  // 2. 只要父组件的render函数被重新执行了，子组件的这个生命周期函数就会被执行
+  // 如果这个组件第一次存在于父组件中，不会执行
+  // 如果这个组件之前已经存在于父组件之中，才会执行
+  componentWillReceiveProps() {
+    // console.log('componentWillReceiveProps');
   }
 }
 ListItem.propTypes = {

@@ -8,6 +8,27 @@ class TodoList extends Component {
     list: []
   }
   key = 1
+  componentWillMount() {
+
+  }
+  // render
+  componentDidMount() {
+
+  }
+  // 决定组件是否更新： return true 更新， return false不更新
+  shouldComponentUpdate() {
+    return false
+  }
+  componentWillUpdate() {
+
+  }
+  // render
+  componentDidUpdate() {
+
+  }
+  componentWillUnmount() {
+
+  }
   addList = () => {
     this.setState((prevSate) => ({
       list: [
@@ -33,11 +54,7 @@ class TodoList extends Component {
       return { list }
     })
   }
-  // 1. 一个组件要从父组件接收参数
-  // 2. 只要父组件的render函数被重新执行了，子组件的这个生命周期函数就会被执行
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-  }
+
   render() {
     const { list, value } = this.state
     return (
