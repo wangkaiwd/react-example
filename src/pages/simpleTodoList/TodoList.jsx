@@ -33,6 +33,11 @@ class TodoList extends Component {
       return { list }
     })
   }
+  // 1. 一个组件要从父组件接收参数
+  // 2. 只要父组件的render函数被重新执行了，子组件的这个生命周期函数就会被执行
+  componentWillReceiveProps() {
+    console.log('componentWillReceiveProps');
+  }
   render() {
     const { list, value } = this.state
     return (
@@ -63,3 +68,10 @@ class TodoList extends Component {
 }
 
 export default TodoList;
+
+// 当组件的state或者props发生改变的时候，render函数就会重新执行
+// ref的值取决于节点的类型：
+//  1. 不能在函数式组件上使用ref属性，因为它们没有实例
+//  2. 当ref属性被用于一个普通的html元素时，React.createRef()将接收底层DOM元素作为
+//     它的current属性以创建ref
+//  3. 当ref属性被用于一个自定义类组件时，ref对象将接收该组件已挂载的实例作为它的current
