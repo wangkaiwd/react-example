@@ -1,0 +1,35 @@
+.wrapper {
+  .hello {
+    font-weight: bold;
+    font-size: 30px; // transition: all 1s; // 通过cc3实现一个过渡动画效果
+  }
+  .show {
+    opacity: 1;
+    transition: all 1s ease-in;
+  }
+  .hide {
+    opacity: 0;
+    transition: all 1s ease-in;
+  }
+  .show2 {
+    // animation-fill-mode:规定动画在播放之前或之后，其动画效果是否可见
+    animation: colorAndHide 1s reverse forwards;
+  }
+  .hide2 {
+    animation: colorAndHide 1s forwards;
+  }
+  @keyframes colorAndHide {
+    0% {
+      color: blue;
+      opacity: 1;
+    }
+    50% {
+      color: red;
+      opacity: 0.5;
+    }
+    100% {
+      color: green;
+      opacity: 0;
+    }
+  }
+}

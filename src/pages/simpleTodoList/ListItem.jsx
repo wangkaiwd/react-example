@@ -9,7 +9,7 @@ class ListItem extends Component {
     return null
   }
   // 进行性能优化，但是对应的开发者工具并没有做出正确的提示
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     if (nextProps.list !== this.props.list) {
       return true
     }

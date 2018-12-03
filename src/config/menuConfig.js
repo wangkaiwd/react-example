@@ -93,6 +93,11 @@ const menuConfig = [
     routerPath: '/simpleTodoList',
     title: 's-todoList',
     realPath: 'simpleTodoList/TodoList'
+  },
+  {
+    routerPath: '/animate',
+    title: 'transition',
+    realPath: 'animate'
   }
 ];
 export default menuConfig;
