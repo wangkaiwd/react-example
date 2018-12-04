@@ -12,13 +12,26 @@
     transition: all 1s ease-in;
   }
   .show2 {
-    // animation-fill-mode:规定动画在播放之前或之后，其动画效果是否可见
-    animation: colorAndHide 1s reverse forwards;
+    animation: color-show 2s forwards;
   }
   .hide2 {
-    animation: colorAndHide 1s forwards;
+    animation: color-hide 2s forwards;
   }
-  @keyframes colorAndHide {
+  @keyframes color-show {
+    0% {
+      opacity: 0;
+      color: green;
+    }
+    50% {
+      color: red;
+      opacity: 0.5;
+    }
+    100% {
+      color: blue;
+      opacity: 1;
+    }
+  }
+  @keyframes color-hide {
     0% {
       color: blue;
       opacity: 1;
