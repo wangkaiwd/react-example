@@ -21,7 +21,14 @@ class UsePlugin extends Component {
           {list.map((item, i) => {
             return (
               <CSSTransition
-                classNames="fade"
+                classNames={{
+                  enter: styles['fade-enter'],
+                  enterActive: styles['fade-enter-active'],
+                  enterDone: styles['fade-enter-done'],
+                  exit: styles['fade-exit'],
+                  exitActive: styles['fade-exit-active'],
+                  exitDone: styles['fade-exit-done']
+                }}
                 timeout={3000}
               >
                 <h2 className={styles.hello}>{item}</h2>
