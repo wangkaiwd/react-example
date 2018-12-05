@@ -17,7 +17,7 @@ const cols = {
 class ChartFirst extends Component {
   render() {
     return (
-      <Chart width={600} height={400} data={data} scale={cols}>
+      <Chart width={800} height={600} data={data} scale={cols}>
         <Axis name="genre" />
         <Axis name="sold" />
         <Legend position="top" dy={-20} />
