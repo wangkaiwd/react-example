@@ -98,6 +98,11 @@ const menuConfig = [
     routerPath: '/animate',
     title: 'transition',
     realPath: 'animate'
+  },
+  {
+    routerPath: '/chart',
+    title: 'bizCharts',
+    realPath: 'chart'
   }
 ];
 export default menuConfig;

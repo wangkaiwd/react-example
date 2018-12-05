@@ -4,7 +4,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-import React, { lazy, Suspense, Component } from 'react';
+import React, { lazy, Suspense } from 'react';
 const getComponent = path => lazy(() => import(`@/pages/${path}`));
 import App from './App';
 import menuConfig from '@/config/menuConfig';
