@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button } from 'antd';
 import styles from './usePlugin.less'
+// react-transition-group官方issue回答：https://github.com/reactjs/react-transition-group/issues/167
+// 如何结合css-modules来实现动画
+// 通过添加:global的方式在全局写入动画，会出现入场的淡入淡出动画不生效
 class UsePlugin extends Component {
   state = {
     visible: true,
