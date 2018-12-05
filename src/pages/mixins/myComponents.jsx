@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Table, Divider, Tag, Input, DatePicker, Select } from 'antd'
+import { Table, Divider, Tag, Input, DatePicker, Select, Form } from 'antd'
+const FormItem = Form.Item;
 const { RangePicker } = DatePicker;
 const Option = Select.Option;
 
@@ -63,6 +64,7 @@ class myComponents extends Component {
   state = {
 
   }
+  searchKey = {}
   formMeta = [
     {
       key: 'keywords',
@@ -95,23 +97,30 @@ class myComponents extends Component {
       ]
     }
   ]
-  getList = (queryData = {}) => {
-    const { pageKey } = this.props.pageKey
-    const params = { ...queryData, ...pageKey }
+  getList = () => {
+    const { pageKey } = this.props
+    const { searchKey } = this
+    const params = { ...searchKey, ...pageKey }
     console.log('params', params)
   }
+  getSearchKey = (searchKey) => {
+    // 将searchKey通过setState()方法放置到全局会报错(由于DatePicker组件引起)
+    this.searchKey = searchKey
+    this.getList()
+  }
   render() {
+    const { resetPageKey, pageOptions } = this.props
     return (
       <div>
         <FormSearch
-          resetPageKey={this.props.resetPageKey}
-          getList={this.getList}
+          resetPageKey={resetPageKey}
+          getSearchKey={this.getSearchKey}
           formMeta={this.formMeta}
         />
         <Table
           columns={columns}
           dataSource={data}
-          pagination={this.props.pageOptions()}
+          pagination={pageOptions(this.getList)}
         />
       </div>
     );

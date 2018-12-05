@@ -15,17 +15,21 @@ const Paging = (Wrapper) => {
       totalCount: 100,
     }
     // 页数改变
-    pageChange = (page, pageSize) => {
+    pageChange = (page, pageSize, getList) => {
       const { pageKey } = this.state;
       pageKey.pageIndex = page;
-      this.setState({ pageKey })
+      this.setState({ pageKey }, () => {
+        getList()
+      })
     }
     // 每页条数改变
-    pageSizeChange = (current, size) => {
+    pageSizeChange = (current, size, getList) => {
       const { pageKey } = this.state;
       pageKey.pageIndex = 1;
       pageKey.pageSize = size;
-      this.setState({ pageKey })
+      this.setState({ pageKey }, () => {
+        getList()
+      })
     }
     // 重置分页条件
     resetPageKey = () => {
@@ -37,13 +41,13 @@ const Paging = (Wrapper) => {
     //    变量不会每次
 
     // 正确方法
-    pageOptions = () => {
+    pageOptions = (getList) => {
       const { pageIndex, totalCount } = this.state.pageKey
       return {
         current: pageIndex,
         total: totalCount,
-        onChange: (page, pageSize) => this.pageChange(page, pageSize),
-        onShowSizeChange: (current, size) => this.pageSizeChange(current, size),
+        onChange: (page, pageSize) => this.pageChange(page, pageSize, getList),
+        onShowSizeChange: (current, size) => this.pageSizeChange(current, size, getList),
         showSizeChanger: true,
         showQuickJumper: true,
         showTotal: () => this.showTotal(totalCount),
@@ -64,8 +68,8 @@ const Paging = (Wrapper) => {
         <Wrapper
           resetPageKey={this.resetPageKey}
           pageKey={this.state.pageKey}
-          {...this.props}
           pageOptions={this.pageOptions}
+          {...this.props}
         />
       )
     }

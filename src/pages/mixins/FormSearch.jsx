@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import { Form, Button, Input, Icon } from 'antd';
+import { Form, Button, Input, DatePicker } from 'antd';
+const { RangePicker } = DatePicker;
 const FormItem = Form.Item;
 import PropTypes from 'prop-types';
 @Form.create()
 class FormSearch extends Component {
+  state = {
+    date: {}
+  }
   onSearch = (e) => {
     e.preventDefault();
-    const queryData = this.props.form.getFieldsValue()
-    if (queryData.date) {
-      if (Array.isArray(queryData.date)) { // 处理时间
-        queryData.date[0] = Math.round(new Date(queryData.date[0]).getTime() / 1000)
-        queryData.date[1] = Math.round(new Date(queryData.date[1]).getTime() / 1000)
+    const searchKey = this.props.form.getFieldsValue()
+    if (searchKey.date) {
+      if (Array.isArray(searchKey.date)) { // 处理时间
+        searchKey.date[0] = Math.round(new Date(searchKey.date[0]).getTime() / 1000)
+        searchKey.date[1] = Math.round(new Date(searchKey.date[1]).getTime() / 1000)
       } else {
-        queryData.date = Math.round(new Date(queryData.date).getTime() / 1000)
+        searchKey.date = Math.round(new Date(searchKey.date).getTime() / 1000)
       }
     }
-    this.props.getList(queryData)
+    this.props.getSearchKey(searchKey)
   }
   reset = () => {
-    this.props.form.resetFields()
-    this.props.resetPageKey()
-    this.props.getList()
+    const { form, resetPageKey } = this.props
+    form.resetFields()
+    resetPageKey()
+    this.props.getSearchKey({})
   }
   render() {
     const { getFieldDecorator } = this.props.form
@@ -55,7 +60,6 @@ class FormSearch extends Component {
 
 FormSearch.propTypes = {
   formMeta: PropTypes.array.isRequired,
-  getList: PropTypes.func.isRequired,
 }
 FormSearch.defaultProps = {
   formMeta: [
