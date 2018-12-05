@@ -1,0 +1,33 @@
+.hello {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+:global {
+  .fade-enter {
+    opacity: 0;
+    color: red;
+  }
+  .fade-enter-active {
+    opacity: 1;
+    color: green;
+    transition: all 3s linear;
+  }
+  .fade-enter-done {
+    opacity: 1;
+    color: green;
+  }
+  .fade-exit {
+    opacity: 1;
+    color: green;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transition: all 3s linear;
+    color: red;
+  }
+  .fade-exit-done {
+    opacity: 0;
+    color: red;
+  }
+}

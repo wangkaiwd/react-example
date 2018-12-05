@@ -103,6 +103,11 @@ const menuConfig = [
     routerPath: '/chart',
     title: 'bizCharts',
     realPath: 'chart'
+  },
+  {
+    routerPath: '/usePlugin',
+    title: 'usePlugin',
+    realPath: 'animate/usePlugin'
   }
 ];
 export default menuConfig;
