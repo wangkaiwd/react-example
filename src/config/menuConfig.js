@@ -108,6 +108,11 @@ const menuConfig = [
     routerPath: '/usePlugin',
     title: 'usePlugin',
     realPath: 'animate/usePlugin'
+  },
+  {
+    routerPath: '/redux-todos',
+    title: 'redux-todos',
+    realPath: 'redux/todoList'
   }
 ];
 export default menuConfig;
