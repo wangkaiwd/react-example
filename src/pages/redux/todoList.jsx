@@ -18,6 +18,21 @@ class TodoLIst extends Component {
     }
     store.dispatch(action)
   }
+  addItem = () => {
+    const { inputValue } = this.state
+    if (inputValue.trim() === '') return
+    const action = {
+      type: 'ADD_TODOS',
+    }
+    store.dispatch(action)
+  }
+  deleteItem = (index) => {
+    const action = {
+      type: 'DELETE_TODOS',
+      value: index
+    }
+    store.dispatch(action)
+  }
   render() {
     const { list, inputValue } = this.state
     return (
@@ -29,13 +44,20 @@ class TodoLIst extends Component {
             value={inputValue}
             onChange={this.handleChange}
           />
-          <Button type="primary">提交</Button>
+          <Button type="primary" onClick={this.addItem}>提交</Button>
           <List
             className={styles.list}
             size="small"
             bordered
             dataSource={list}
-            renderItem={item => (<List.Item>{item}</List.Item>)}
+            renderItem={(item, i) =>
+              (<List.Item
+                className={styles.hand}
+                onClick={() => this.deleteItem(i)}
+              >
+                {item}
+              </List.Item>)
+            }
           />
         </Col>
       </Row>
