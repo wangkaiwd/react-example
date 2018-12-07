@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Button, List, Row, Col } from 'antd'
 import styles from "./todoList.less";
+import { CHANGE_INPUT_VALUE, ADD_TODOS, DELETE_TODOS } from '@/store/actionTypes';
 import store from '@/store'
 class TodoLIst extends Component {
   // constructor也是也是一个生命周期函数
@@ -13,7 +14,7 @@ class TodoLIst extends Component {
   }
   handleChange = (e) => {
     const action = {
-      type: 'CHANGE_INPUT_VALUE',
+      type: CHANGE_INPUT_VALUE,
       value: e.target.value
     }
     store.dispatch(action)
@@ -22,13 +23,13 @@ class TodoLIst extends Component {
     const { inputValue } = this.state
     if (inputValue.trim() === '') return
     const action = {
-      type: 'ADD_TODOS',
+      type: ADD_TODOS,
     }
     store.dispatch(action)
   }
   deleteItem = (index) => {
     const action = {
-      type: 'DELETE_TODOS',
+      type: DELETE_TODOS,
       value: index
     }
     store.dispatch(action)
