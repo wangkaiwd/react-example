@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Input, Button, List, Row, Col } from 'antd'
 import styles from "./todoList.less";
+import axios from 'axios'
 import { changeInputValueAction, addTodosAction, deleteTodosAction } from '@/store/actionCreaters'
 import store from '@/store'
+// ui组件：只负责页面内容的展示
+// 容器组件：专门负责页面逻辑的处理
+// 无状态组件：函数组件，并且没有生命周期函数
 class TodoLIst extends Component {
   // constructor也是也是一个生命周期函数
   constructor(props) {
@@ -11,6 +15,8 @@ class TodoLIst extends Component {
     this.state = store.getState()
     // 注册监听器，当更新store中的state时候调用监听器中传入的函数
     store.subscribe(() => this.setState(store.getState()))
+  }
+  componentDidMount() {
   }
   handleChange = (e) => {
     // 创建action
