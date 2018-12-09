@@ -1,4 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
+// redux-thunk是一个比较流行的异步action中间件，帮助你统一了异步和同步action的调用方式
+// 把异步过程放在action级别解决，对component没有影响
+// 它能够在书写actionCreators返回一个function,而不仅仅是对象(action)
 import ReduxThunk from 'redux-thunk'
 import reducer from "./reducer";
 
@@ -9,6 +12,7 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose
 
 const enhancer = composeEnhancers(
+  // redux中间件：通过对dispatch进行了一个升级，之前只可以接收一个action（对象）,现在可以接收一个function并执行，也可以接收对象
   applyMiddleware(ReduxThunk)
   // other store enhancers if any
 )

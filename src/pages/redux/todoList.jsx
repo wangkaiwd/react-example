@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Input, Button, List, Row, Col } from 'antd'
 import styles from "./todoList.less";
-import axios from 'axios'
 import {
   changeInputValueAction,
   addTodosAction,
   deleteTodosAction,
-  initTodosAction
+  getTodoListAction
 } from '@/store/actionCreaters'
 import store from '@/store'
 // ui组件：只负责页面内容的展示
@@ -22,12 +21,8 @@ class TodoLIst extends Component {
     store.subscribe(() => this.setState(store.getState()))
   }
   componentDidMount() {
-    axios.get('https://easy-mock.com/mock/5c0ccee39ae7bb46cb933da4/js/todoList')
-      .then(res => {
-        const list = res.data.data.todoList
-        const action = initTodosAction(list)
-        store.dispatch(action)
-      })
+    const action = getTodoListAction()
+    store.dispatch(action)
   }
   handleChange = (e) => {
     // 创建action
