@@ -1,7 +1,7 @@
-import { CHANGE_INPUT_VALUE, ADD_TODOS, DELETE_TODOS } from '@/store/actionTypes';
+import { CHANGE_INPUT_VALUE, ADD_TODOS, DELETE_TODOS, ININT_TODOS } from '@/store/actionTypes';
 const defaultState = {
   inputValue: '',
-  list: [1, 2, 3]
+  list: []
 }
 // reducer可以接收state,但是不能修改state
 export default (state = defaultState, action) => {
@@ -21,6 +21,11 @@ export default (state = defaultState, action) => {
       const newState2 = { ...state }
       newState2.list.splice(action.index, 1)
       return newState2
+    case ININT_TODOS:
+      const newState3 = { ...state }
+      newState3.list = action.data
+      // 返回给store,store会自动更改state
+      return newState3
     default:
       return state
   }

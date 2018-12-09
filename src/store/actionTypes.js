@@ -3,3 +3,4 @@
 export const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE'
 export const ADD_TODOS = 'ADD_TODOS'
 export const DELETE_TODOS = 'DELETE_TODOS'
+export const ININT_TODOS = 'ININT_TODOS'
