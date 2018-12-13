@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 import SideMenu from '@/components/SideMenu'
 class App extends Component {
   render() {
