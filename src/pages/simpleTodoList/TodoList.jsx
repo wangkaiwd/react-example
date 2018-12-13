@@ -11,6 +11,7 @@ class TodoList extends Component {
   componentWillMount() {
 
   }
+  // 在调用render方法之
   getDerivedStateFromProps(props, state) {
 
   }
@@ -27,7 +28,7 @@ class TodoList extends Component {
   }
   // render
 
-  // 在更新发生后立即被调用。这个方法在第一次渲染时不会被调用
+  // 在更新发生后立即被调用。这个方法在第一次渲染时不会被调用,
   componentDidUpdate(prevProps, prevSate, snapshot) {
 
   }

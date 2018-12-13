@@ -2,7 +2,8 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
 const getComponent = path => lazy(() => import(`@/pages/${path}`));
@@ -17,20 +18,18 @@ const RouteConfig = () => {
     <Router>
       <App>
         <Suspense fallback={<Loading />}>
-          <Route render={() => {
-            return (
-              <Switch>
-                {menuConfig.map(menu => (
-                  <Route
-                    key={menu.realPath}
-                    path={menu.routerPath}
-                    component={getComponent(menu.realPath)}
-                  />
-                ))}
-                <Redirect from="/" to={menuConfig[0].routerPath} />
-              </Switch>
-            )
-          }} />
+          <Route render={() => (
+            <Switch>
+              {menuConfig.map(menu => (
+                <Route
+                  key={menu.realPath}
+                  path={menu.routerPath}
+                  component={getComponent(menu.realPath)}
+                />
+              ))}
+              <Redirect from="/" to={menuConfig[0].routerPath} />
+            </Switch>
+          )} />
         </Suspense>
       </App>
     </Router>

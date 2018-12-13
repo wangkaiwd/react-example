@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import SideMenu from '@/components/SideMenu'
-
 class App extends Component {
-  render () {
+  render() {
     return (
       <div className="app">
-        <SideMenu/>
+        <SideMenu />
         <div className="content">
           {this.props.children}
         </div>
-      </div>
+      </div >
     )
   }
 }
