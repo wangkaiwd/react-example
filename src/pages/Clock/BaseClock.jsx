@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // 定义一个公用的时间逻辑
+// 高阶组件和修饰器可以很好的配合
 const WithTime = (Wrapper) => {
   return class BaseClock extends Component {
     state = {

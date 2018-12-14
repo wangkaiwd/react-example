@@ -82,3 +82,74 @@ export default WithTime(Chat)
 
 //   非受控组件： 使用ref从DOM获取表单值
 //  大多数情况下推荐使用受控组件来实现表单
+
+// 修饰器函数：用来修改类的行为
+
+function testable(target) { // target是MyTestableClass类本身
+  target.isTestable = true
+}
+@testable
+class MyTestableClass {
+
+}
+console.log(MyTestableClass.isTestable)
+
+// 修饰器的行为
+// @decorator
+// class A {}
+// // 等同于
+// class A {}
+// // 在包装函数对类没有相关操作的时候，还是返回A
+// A = decorator(A) || A
+// 修饰器的第一个参数，就是所要修饰的目标类
+
+// 比较复杂的装饰器
+// 装饰器可以接收参数
+// 要传其它参数的时候，可以再修饰器外面再封装一层函数
+function testable1(isTestable) {
+  return function (target) {
+    target.isTestable = isTestable
+  }
+}
+// 默认会将target当前修饰的类作为第一个参数
+@testable1(111)
+class MyTestableClass1 {
+
+}
+console.log(MyTestableClass1.isTestable)
+
+
+
+// 修饰器对类的行为的改变是在代码编译时发生的，而不是在运行时。本质：编译时执行的函数
+// 通过修饰器对类添加实例属性
+function testable2(target) {
+  target.prototype.isTestable = true
+}
+@testable2
+class MyTestableClass2 {
+
+}
+const obj = new MyTestableClass2()
+console.log(obj.isTestable)
+
+
+function mixins(...list) {
+  return function (target) {
+    // Object.assign: 用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象
+    // Objec.assign(target,...sources)
+    // target: 目标对象，sources:源对象， 返回值：目标对象
+
+    // 将传入的参数复制到target.prototype,即对应被修饰类的原型上
+    Object.assign(target.prototype, ...list)
+  }
+}
+const Foo = {
+  foo() {
+    console.log('foo')
+  }
+}
+@mixins(Foo)
+class MyClass { }
+const obj1 = new MyClass()
+obj1.foo()
+// 修饰器不能用于函数，因为存在函数提升
