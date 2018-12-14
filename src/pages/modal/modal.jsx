@@ -3,10 +3,34 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import styles from './modal.less'
+// 模态框显示隐藏的自动控制
+//  1.在父组件没有传入 onOk 和onCancel函数
+//      以父元素传入的visible为初始visible,之后在组件内部进行visible的控制
+//  2. 父组件传入了onOk和onCancel函数
+//  3. 父组件只传入了onOk或者onCancel其中之一
 class Modal extends Component {
+  state = {
+    visible: false
+  }
+  closeModal = () => {
+    console.log('close')
+    const { onCancel } = this.props
+    onCancel && onCancel()
+    this.setState({ visible: false })
+  }
+  confirm = () => {
+    console.log('confirm')
+    const { onOk } = this.props
+    onOk && onOk()
+    this.setState({ visible: false })
+  }
+  componentDidMount = () => {
+
+  }
   el = document.body
   modalElement = () => {
-    const { title, onCancel, visible, onOk } = this.props
+    const { title } = this.props
+    const { visible } = this.state
     return (
       <CSSTransition
         in={visible}
@@ -42,8 +66,8 @@ class Modal extends Component {
                 {this.props.children}
               </div>
               <div className={styles.modalFooter}>
-                <button onClick={onCancel}>取消</button>
-                <button onClick={onOk}>确认</button>
+                <button onClick={this.closeModal}>取消</button>
+                <button onClick={this.confirm}>确认</button>
               </div>
             </div>
           </CSSTransition>

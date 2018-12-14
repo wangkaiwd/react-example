@@ -15,8 +15,6 @@ class UseModal extends Component {
         <Modal
           visible={visible}
           title="标题123"
-          onCancel={() => this.setState({ visible: false })}
-          onOk={() => this.setState({ visible: false })}
         >
           please write something
         </Modal>
