@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import Modal from './modal'
 class UseModal extends Component {
+  state = {
+    visible: false
+  }
+  toggleModal = () => {
+    this.setState({ visible: !this.state.visible })
+  }
   render() {
+    const { visible } = this.state
     return (
       <div>
-        <Modal />
+        <button onClick={this.toggleModal}>切换</button>
+        <Modal
+          visible={visible}
+          title="标题123"
+          onCancel={() => this.setState({ visible: false })}
+          onOk={() => this.setState({ visible: false })}
+        >
+          please write something
+        </Modal>
       </div>
     );
   }
