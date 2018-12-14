@@ -8,7 +8,6 @@ class TabSwitch extends Component {
   }
   render() {
     const { tabConfig } = this.props
-    console.log('tab', tabConfig, this.props)
     return (
       <div>
         <Tabs defaultActiveKey={tabConfig[0]} onChange={this.callback}>

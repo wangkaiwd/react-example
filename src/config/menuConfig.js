@@ -113,6 +113,11 @@ const menuConfig = [
     routerPath: '/redux-todos',
     title: 'redux-todos',
     realPath: 'redux/todoList'
+  },
+  {
+    routerPath: '/modal',
+    title: 'selfModal',
+    realPath: 'modal/useModal'
   }
 ];
 export default menuConfig;

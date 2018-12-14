@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import SideMenu from '@/components/SideMenu'
-
 class App extends Component {
   render() {
     return (
@@ -9,7 +8,7 @@ class App extends Component {
         <div className="content">
           {this.props.children}
         </div>
-      </div>
+      </div >
     )
   }
 }
