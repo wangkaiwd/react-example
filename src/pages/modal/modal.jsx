@@ -13,19 +13,22 @@ class Modal extends Component {
     visible: false
   }
   closeModal = () => {
-    console.log('close')
     const { onCancel } = this.props
     onCancel && onCancel()
     this.setState({ visible: false })
   }
   confirm = () => {
-    console.log('confirm')
     const { onOk } = this.props
     onOk && onOk()
     this.setState({ visible: false })
   }
   componentDidMount = () => {
-
+    this.setState({ visible: this.props.visible })
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.visible !== this.props.visible) {
+      this.setState({ visible: nextProps.visible })
+    }
   }
   el = document.body
   modalElement = () => {
