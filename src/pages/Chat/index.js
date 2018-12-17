@@ -10,7 +10,6 @@ function MessageList(props) {
     />
   )
 }
-
 class Chat extends Component {
   state = {
     messages: [],

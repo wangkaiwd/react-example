@@ -8,7 +8,6 @@ const data = [
   { genre: 'Shooter', sold: 350, income: 5271 },
   { genre: 'Other', sold: 150, income: 3710 }
 ];
-
 // 定义度量
 const cols = {
   sold: { alias: '销售量' },
