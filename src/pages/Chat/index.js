@@ -63,6 +63,7 @@ class Chat extends Component {
             <input placeholder="非受控组件" ref={(input) => this.input = input} type="text" />
             <button onClick={this.handleClick}>按钮</button>
             <Card title={this.props.time.toLocaleTimeString()}>
+              时间展示
             </Card>
           </Col>
         </Row>

@@ -12,6 +12,9 @@ class Modal extends Component {
   state = {
     visible: false
   }
+  // static getDerivedStateFromProps(prop, state) {
+  //   return { visible: prop.visible }
+  // }
   closeModal = () => {
     const { onCancel } = this.props
     onCancel && onCancel()
@@ -22,16 +25,12 @@ class Modal extends Component {
     onOk && onOk()
     this.setState({ visible: false })
   }
-  // componentDidMount = () => {
-  //   this.setState({ visible: this.props.visible })
-  // }
-  // componentWillReceiveProps(nextProps) {
-  //   console.log('next', nextProps)
-  //   this.setState({ visible: nextProps.visible })
-  // }
-  static getDerivedStateFromPrpos(props,state) {
-    console
-
+  componentDidMount = () => {
+    this.setState({ visible: this.props.visible })
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('next', nextProps)
+    this.setState({ visible: nextProps.visible })
   }
   el = document.body
   modalElement = () => {
