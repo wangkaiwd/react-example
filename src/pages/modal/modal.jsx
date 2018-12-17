@@ -22,13 +22,16 @@ class Modal extends Component {
     onOk && onOk()
     this.setState({ visible: false })
   }
-  componentDidMount = () => {
-    this.setState({ visible: this.props.visible })
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.visible !== this.props.visible) {
-      this.setState({ visible: nextProps.visible })
-    }
+  // componentDidMount = () => {
+  //   this.setState({ visible: this.props.visible })
+  // }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('next', nextProps)
+  //   this.setState({ visible: nextProps.visible })
+  // }
+  static getDerivedStateFromPrpos(props,state) {
+    console
+
   }
   el = document.body
   modalElement = () => {

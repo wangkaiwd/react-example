@@ -4,14 +4,14 @@ class UseModal extends Component {
   state = {
     visible: false
   }
-  toggleModal = () => {
-    this.setState({ visible: !this.state.visible })
+  openModal = () => {
+    this.setState({ visible: true })
   }
   render() {
     const { visible } = this.state
     return (
       <div>
-        <button onClick={this.toggleModal}>切换</button>
+        <button onClick={this.openModal}>切换</button>
         <Modal
           visible={visible}
           title="标题123"
