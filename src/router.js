@@ -2,8 +2,7 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect,
-  withRouter
+  Redirect
 } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
 const getComponent = path => lazy(() => import(`@/pages/${path}`));
