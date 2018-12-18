@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Col, Input, message, Row, List, Card } from 'antd'
 import WithTime from '@/pages/Clock/BaseClock'
+import withButton from '@/decorator/AuthButton'
+const AuthButton = withButton(Button)
 function MessageList(props) {
   return (
     <List
@@ -67,6 +69,8 @@ class Chat extends Component {
             </Card>
           </Col>
         </Row>
+        <AuthButton type="primary">权限按钮1</AuthButton>
+        <AuthButton type="danger" auth={false}>权限按钮2</AuthButton>
       </div>
     )
   }
