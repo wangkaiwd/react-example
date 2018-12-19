@@ -118,6 +118,11 @@ const menuConfig = [
     routerPath: '/modal',
     title: 'selfModal',
     realPath: 'modal/useModal'
+  },
+  {
+    routerPath: '/priviteRoute',
+    title: 'priviteRoute',
+    realPath: 'priviteRoute'
   }
 ];
 export default menuConfig;
