@@ -45,8 +45,25 @@ const fakeAuth = {
     setTimeout(cb, 100);
   }
 };
-const Button = () => {
-  
+const Button = ({ history }) => {
+  return fakeAuth.isAuthenticated ? (
+    <p>
+      Welcome!{" "}
+      <button
+        onClick={
+          () => {
+            fakeAuth.signout(() => history.push("/"))
+          }
+        }
+      >
+        Sign out
+      </button>
+    </p>
+  )
+    :
+    (
+      <p>You are not logged in.</p>
+    )
 }
 const AuthButton = withRouter(
   ({ history }) =>
