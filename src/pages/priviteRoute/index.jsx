@@ -45,6 +45,7 @@ const fakeAuth = {
     setTimeout(cb, 100);
   }
 };
+// 通过withRouter包装之后可以使用history对象
 const Button = ({ history }) => {
   return fakeAuth.isAuthenticated ? (
     <p>
