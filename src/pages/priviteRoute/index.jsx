@@ -83,16 +83,16 @@ const AuthButton = withRouter(
         <p>You are not logged in.</p>
       )
 );
-
+// 通过props属性传递来
 function PrivateRoute({ component: Component, ...rest }) {
   return (
     <Route
       {...rest}
       render={props =>
         fakeAuth.isAuthenticated ? (
-          <Component {...props} />
+          <Component {...props} /> // 如果校验通过的话展示Protected组件
         ) : (
-            <Redirect
+            <Redirect  // 否则跳转到登录页面，并通过state将来之前的页面路径通过state传递过来
               to={{
                 pathname: "/login",
                 state: { from: props.location }
