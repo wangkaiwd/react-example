@@ -23,9 +23,9 @@ const RouteConfig = () => {
               <Switch>
                 {menuConfig.map(menu => (
                   <Route
-                    key={menu.realPath}
-                    path={menu.routerPath}
-                    component={getComponent(menu.realPath)}
+                    key       = {menu.realPath}
+                    path      = {menu.routerPath}
+                    component = {getComponent(menu.realPath)}
                   />
                 ))}
                 <Redirect from="/" to={menuConfig[0].routerPath} />

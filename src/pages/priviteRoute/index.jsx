@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
   Route,
   Link,
   Redirect,
@@ -23,24 +22,26 @@ import {
 //          或者通过本地存储实现：跳转之前记录来之前的路径，存到本地存储中，到了登录页面之后，登陆之后将地址从
 //          本地存储中取出，进行跳转
 
+// 路由参数整理：使用hasRouter，不能通过state和query进行参数保留
+//              使用browserRoter可以通过state进行参数保留
+// 总结：使用路由进行参数传递需要自己简单封装处理
+
 function AuthExample() {
   return (
-    <Router>
-      <div>
-        <AuthButton />
-        <ul>
-          <li>
-            <Link to="/public">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul>
-        <Route path="/public" component={Public} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/protected" component={Protected} />
-      </div>
-    </Router>
+    <div>
+      <AuthButton />
+      <ul>
+        <li>
+          <Link to="/priviteRoute/public">Public Page</Link>
+        </li>
+        <li>
+          <Link to="/priviteRoute/protected">Protected Page</Link>
+        </li>
+      </ul>
+      <Route path="/priviteRoute/public" component={Public} />
+      <Route path="/priviteRoute/login" component={Login} />
+      <PrivateRoute path="/priviteRoute/protected" component={Protected} />
+    </div>
   );
 }
 
@@ -63,7 +64,7 @@ const Button = ({ history }) => {
       <button
         onClick={
           () => {
-            fakeAuth.signout(() => history.push("/"))
+            fakeAuth.signout(() => history.push("/priviteRoute"))
           }
         }
       >
@@ -83,7 +84,7 @@ const AuthButton = withRouter(
         Welcome!{" "}
         <button
           onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
+            fakeAuth.signout(() => history.push("/priviteRoute"));
           }}
         >
           Sign out
@@ -96,6 +97,15 @@ const AuthButton = withRouter(
 // 通过props属性传递来
 // render:
 function PrivateRoute({ component: Component, ...rest }) {
+  const handleClick = (props) => {
+    console.log('click', props)
+    // props.history.push({
+    //   pathname: '/priviteRoute/login',
+    //   state: { value: '1234' },
+    //   query: { from: props.location.pathname }
+    // })
+    console.log('to')
+  }
   return (
     <Route
       {...rest}
@@ -103,12 +113,7 @@ function PrivateRoute({ component: Component, ...rest }) {
         fakeAuth.isAuthenticated ? (
           <Component {...props} /> // 如果校验通过的话展示Protected组件
         ) : (
-            <Redirect  // 否则跳转到登录页面，并通过state将来之前的页面路径通过state传递过来
-              to={{
-                pathname: "/login",
-                state: { from: props.location }
-              }}
-            />
+            <span onClick={() => handleClick(props)}>to</span>
           )
       }
     />
@@ -136,14 +141,15 @@ class Login extends React.Component {
 
   render() {
     // 获取通过react-router中通过state传来的参数
-    let { from } = this.props.location.state || { from: { pathname: "/" } };
+    console.log('props', this.props)
+    const params = new URLSearchParams(this.props.location.search);
+    let from = params.get('from') || "/priviteRoute";
     let { redirectToReferrer } = this.state;
-
     if (redirectToReferrer) return <Redirect to={from} />;
 
     return (
       <div>
-        <p>You must log in to view the page at {from.pathname}</p>
+        {/* <p>You must log in to view the page at {from.pathname}</p> */}
         <button onClick={this.login}>Log in</button>
       </div>
     );
