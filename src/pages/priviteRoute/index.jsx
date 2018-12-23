@@ -24,7 +24,25 @@ import {
 
 // 路由参数整理：使用hasRouter，不能通过state和query进行参数保留
 //              使用browserRoter可以通过state进行参数保留
-// 总结：使用路由进行参数传递需要自己简单封装处理
+// 总结：react中并没对路由跳转进行?key=value形式的处理，使用路由进行参数传递需要自己简单封装处理
+
+// 官网介绍：
+// React Router does not have any opinions about how your parse URL query strings. 
+// Some applications use simple key=value query strings, but others embed arrays and objects in the query string. 
+// So it's up to you to parse the search string yourself.
+// In modern browsers that support the URL API, you can instantiate a URLSearchParams object from location.search and use that.
+// In browsers that do not support the URL API (read: IE) you can use a 3rd party library such as query-string.
+
+//  react router 对于你如何解析URL query strings没有任何建议
+// 一些应用使用简单的key=value键值对query strings,但是其它的可能会在query string中嵌入数组和对象
+// 因此，如何解析查询query string取决于你自己
+// 在现代浏览器中支持URL API,你能实例化一个URLSearchParams对象来从location.search中获取并使用它们
+// 在不支持URL API的浏览器中，你可以使用第三方库，例如query-string
+
+// 实践： 1. 不能在pathname中通过?的形式再地址后拼接参数，这样即使页面路由会进行跳转，但是对应的组件并不会加载
+//       2. 在使用BrowserRouter时，通过state的传参可以保存在历史中，
+//          而使用HashRouter时，通过state和query传递的参数只在当时生效，刷新页面就会消失
+//       这与之前的版本有很大的区别，并没有为开发者做内部封装
 
 function AuthExample() {
   return (
@@ -113,7 +131,12 @@ function PrivateRoute({ component: Component, ...rest }) {
         fakeAuth.isAuthenticated ? (
           <Component {...props} /> // 如果校验通过的话展示Protected组件
         ) : (
-            <span onClick={() => handleClick(props)}>to</span>
+            <Redirect
+              to={{
+                pathname: `/priviteRoute/login`,
+                search: `?from=${props.location.pathname}`
+              }}
+            />
           )
       }
     />
@@ -149,7 +172,7 @@ class Login extends React.Component {
 
     return (
       <div>
-        {/* <p>You must log in to view the page at {from.pathname}</p> */}
+        <p>You must log in to view the page at {from}</p>
         <button onClick={this.login}>Log in</button>
       </div>
     );
