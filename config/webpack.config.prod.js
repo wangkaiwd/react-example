@@ -13,6 +13,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const paths = require('./paths')
 const getClientEnvironment = require('./env')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -358,6 +359,7 @@ module.exports = {
     // Generates an `index.html` file with the <script> injected.
     // 打包前清空build目录
     new CleanWebpackPlugin('build'),
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
