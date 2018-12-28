@@ -25,7 +25,6 @@ class LocaleSample extends Component {
     this.setState({ locale })
   }
   componentDidMount() {
-    console.log('localeButton', this.localeButton)
     console.log('localeButton1', this.localeButton1)
   }
   render() {
@@ -41,6 +40,7 @@ class LocaleSample extends Component {
             <Button type="primary" onClick={this.toggleLocale}>切换语言</Button>
           </Col>
           <LocaleButton
+            // 通过函数来获取子组件实例
             getInstance={(localeButton1) => this.localeButton1 = localeButton1}
           // ref={(button) => this.localeButton = button}
           // 这样不仅无法获取到子组件实例，而且还会报错：
