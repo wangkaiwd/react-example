@@ -123,6 +123,11 @@ const menuConfig = [
     routerPath: '/priviteRoute',
     title: 'priviteRoute',
     realPath: 'priviteRoute'
+  },
+  {
+    routerPath: '/lifeCircle',
+    title: 'lifeCircle',
+    realPath: 'lifeCircle'
   }
 ];
 export default menuConfig;
