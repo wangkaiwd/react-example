@@ -17,6 +17,7 @@ const RouteConfig = () => {
   return (
     <Router>
       <App>
+        {/* 错误边界 */}
         <ErrorBoundary>
           <Suspense fallback={<Loading />}>
             <Route render={() => (
