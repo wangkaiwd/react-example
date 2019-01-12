@@ -3,6 +3,9 @@ import { Button } from 'antd'
 class ChildLife extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      test: 'hhh'
+    }
     console.log('constructor')
   }
 
@@ -10,8 +13,10 @@ class ChildLife extends Component {
   // 在render()方法之前调用
   // 调用时机：组件初始化和之后的更新。
   // 它应该返回一个对象来更新state或返回null表示什么都不更新
-  static getDerivedStateFromProps(props) {
-    console.log('props', props)
+  static getDerivedStateFromProps(props, state) {
+    console.log('props', props, state)
+    // 这里相当于: 扩展运算符和Object.assign(),如果有的话就会替换，如果没有的话就新增
+    return { name: props.name }
   }
 
   render() {
