@@ -23,7 +23,6 @@ class MyTreeSelect extends Component {
       const hasPro = pro.find((subOne = {}) => one.province.provinceId === subOne.provinceId)
       !hasPro && pro.push(one.province)
       if (toString.call(one.cities) === "[object Array]") {
-        // one.cities.map(item => cit.push(item))
         one.cities.map(item => cit.push(item))
         return
       }
