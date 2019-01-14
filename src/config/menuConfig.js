@@ -128,6 +128,11 @@ const menuConfig = [
     routerPath: '/lifeCircle',
     title: 'lifeCircle',
     realPath: 'lifeCircle'
+  },
+  {
+    routerPath: '/treeSelect',
+    title: 'treeSelect',
+    realPath: 'treeSelect'
   }
 ];
 export default menuConfig;
