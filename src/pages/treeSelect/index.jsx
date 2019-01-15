@@ -1,7 +1,116 @@
 import React, { Component } from 'react';
 import { TreeSelect } from 'antd';
 const TreeNode = TreeSelect.TreeNode;
-import data from './data'
+const data = [
+  {
+    "provinceId": 1,
+    "provinceName": "北京",
+    "cities": [
+      {
+        "cityName": "北京市",
+        "cityId": 35
+      }
+    ]
+  },
+  {
+    "provinceId": 2,
+    "provinceName": "天津",
+    "cities": [
+      {
+        "cityName": "天津市",
+        "cityId": 52
+      }
+    ]
+  },
+  {
+    "provinceId": 3,
+    "provinceName": "上海",
+    "cities": [
+      {
+        "cityName": "上海市",
+        "cityId": 99
+      }
+    ]
+  },
+  {
+    "provinceId": 4,
+    "provinceName": "重庆",
+    "cities": [
+      {
+        "cityName": "重庆市",
+        "cityId": 100
+      }
+    ]
+  },
+  {
+    "provinceId": 5,
+    "provinceName": "河北省",
+    "cities": [
+      {
+        "cityName": "保定市",
+        "cityId": 118
+      },
+      {
+        "cityName": "沧州市",
+        "cityId": 119
+      },
+      {
+        "cityName": "承德市",
+        "cityId": 120
+      },
+      {
+        "cityName": "邯郸市",
+        "cityId": 121
+      },
+      {
+        "cityName": "衡水市",
+        "cityId": 234
+      },
+      {
+        "cityName": "廊坊市",
+        "cityId": 235
+      },
+      {
+        "cityName": "秦皇岛市",
+        "cityId": 236
+      },
+      {
+        "cityName": "石家庄市",
+        "cityId": 237
+      },
+      {
+        "cityName": "唐山市",
+        "cityId": 238
+      },
+      {
+        "cityName": "邢台市",
+        "cityId": 239
+      },
+      {
+        "cityName": "张家口市",
+        "cityId": 240
+      },
+    ]
+  },
+  {
+    "provinceId": 6,
+    "provinceName": "自定义",
+    "cities": [
+      {
+        "cityId": 248,
+        "cityName": "自定义1"
+      },
+      {
+        "cityId": 22229,
+        "cityName": "自定义2"
+      },
+      {
+        "cityId": 2222229,
+        "cityName": "自定义3"
+      }
+    ]
+  }
+]
 class MyTreeSelect extends Component {
   state = {
     treeData: []
@@ -11,13 +120,15 @@ class MyTreeSelect extends Component {
     if (value.length === 0) {
       return this.setState({ treeData: value })
     }
+    // 获得当前选择的省市组成的数组
     const data = extra.allCheckedNodes.map(item => {
       const province = item.node.props.parent
       const cities = item.node.props.current
       return { province, cities }
     })
-    // 建立省市区数组
+    // 单独建立省数组和实数组
     const pro = [], cit = []
+    // 将当前选中的去重省组成一个数组，将城市组成一个数组
     data.map(one => {
       // 去除重复的省
       const hasPro = pro.find((subOne = {}) => one.province.provinceId === subOne.provinceId)
@@ -28,6 +139,7 @@ class MyTreeSelect extends Component {
       }
       cit.push(one.cities)
     })
+    // 遍历省数组，然后通过provinceId找出对应的市，组合成最终结果
     const treeData = pro.map(item => {
       const cities = []
       for (let city of cit) {
@@ -48,12 +160,19 @@ class MyTreeSelect extends Component {
         subItem.provinceId = item.provinceId
         return subItem
       })
-      // console.log('item', item.cities)
       delete itemCopy.cities
-      // console.log('itemcopy', itemCopy)
-      return <TreeNode parent={itemCopy} current={item.cities} key={item.provinceId} value={item.provinceId} title={item.provinceName}>
-        {this.createSubTree(item)}
-      </TreeNode>
+      // 为TreeNode组件传入的其它属性，都会显示到extra(onChange的第三个参数)上，extra.allCheckedNodes上边
+      return (
+        <TreeNode
+          parent={itemCopy}
+          current={item.cities}
+          key={item.provinceId}
+          value={item.provinceId}
+          title={item.provinceName}
+        >
+          {this.createSubTree(item)}
+        </TreeNode>
+      )
     })
   }
   createSubTree = (item) => {
@@ -94,60 +213,3 @@ class MyTreeSelect extends Component {
 }
 
 export default MyTreeSelect;
-
-const array = [
-  {
-    "provinceId": 52570,
-    "provinceName": "xE8225dmye",
-    "cities": [
-      {
-        "cityId": 52825,
-        "cityName": "ra9HCAJKpu"
-      },
-      {
-        "cityId": 53377,
-        "cityName": "6i1AOIxZcA"
-      },
-      {
-        "cityId": 54298,
-        "cityName": "FVT771bn9q"
-      }
-    ]
-  },
-  {
-    "provinceId": 55215,
-    "provinceName": "HMnxHBZe5p",
-    "cities": [
-      {
-        "cityId": 56167,
-        "cityName": "eyVEfsJJGT"
-      },
-      {
-        "cityId": 56465,
-        "cityName": "KtMNS9yM8t"
-      },
-      {
-        "cityId": 57415,
-        "cityName": "B0QbrooKa1"
-      }
-    ]
-  },
-  {
-    "provinceId": 57687,
-    "provinceName": "KYzLmvqfyT",
-    "cities": [
-      {
-        "cityId": 58527,
-        "cityName": "LmiV9PFEG7"
-      },
-      {
-        "cityId": 59110,
-        "cityName": "gJJzWd2iAP"
-      },
-      {
-        "cityId": 59173,
-        "cityName": "egj0GiglRh"
-      }
-    ]
-  }
-]
