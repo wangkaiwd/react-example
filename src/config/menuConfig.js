@@ -133,6 +133,11 @@ const menuConfig = [
     routerPath: '/treeSelect',
     title: 'treeSelect',
     realPath: 'treeSelect'
+  },
+  {
+    routerPath: '/deleteIndex',
+    title: 'deleteIndex',
+    realPath: 'deleteIndex'
   }
 ];
 export default menuConfig;

@@ -7,7 +7,7 @@ import {
 import React, { lazy, Suspense } from 'react';
 const getComponent = path => lazy(() => import(`@/pages/${path}`));
 import App from './App';
-import ErrorBoundary from '@/pages/errorBoundary'
+import ErrorBoundary from '@/pages/errorBoundary';
 import menuConfig from '@/config/menuConfig';
 import Loading from '@/components/Loading';
 // 缩小了bundle.js(缩小了一半)，但是新增了一个 1.chunk.js(比较大)
