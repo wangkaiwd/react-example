@@ -20,45 +20,42 @@ class DynamicForm extends Component {
     ],
     keys: []
   }
-  componentDidMount = () => {
-    this.uniQueKey(this.state.data)
+  uniQueKey = data => data.map((item, i) => i)
+  remove = (k) => {
+    const { form } = this.props;
+    // can use data-binding to get
+    const keys = form.getFieldValue('keys');
+    // We need at least one passenger
+    if (keys.length === 1) {
+      return;
+    }
+    // can use data-binding to set
+    form.setFieldsValue({ keys: keys.filter(key => key !== k) });
   }
-  // 生成唯一key
-  uniQueKey = data => {
-    const keys = data.map((item, i) => i)
-    this.setState({ keys })
-  }
-  // 移除
-  onRemove = i => {
-    const { keys, data } = this.state
-    keys.splice(i, 1)
-    data.splice(i, 1)
-    this.setState({ keys, data })
-  }
-  // 新增
-  onAdd = () => {
-    const { keys, data } = this.state
-    const lastKey = keys[keys.length - 1],
-      nextKey = lastKey + 1,
-      tempData = { title: '', key: '' }
-    data.push(tempData)
-    this.setState({ keys: keys.concat(nextKey), tempData })
+
+  add = () => {
+    const { form } = this.props;
+    // can use data-binding to get
+    const keys = form.getFieldValue('keys');
+    const nextKeys = keys.concat(++id);
+    // can use data-binding to set
+    // important! notify form to detect changes
+    form.setFieldsValue({
+      keys: nextKeys,
+    });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) { console.log('params is :', this.state.data) }
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
     });
   }
-  onChange = (e, i) => {
-    const { data } = this.state
-    data[i].title = e.target.value
-    this.setState({ data })
-  }
+
   render() {
-    const { getFieldDecorator } = this.props.form;
-    const { keys } = this.state
+    const { getFieldDecorator, getFieldValue } = this.props.form;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -75,34 +72,33 @@ class DynamicForm extends Component {
         sm: { span: 20, offset: 4 },
       },
     };
-    const formItems = keys.map((k, i) => (
+    getFieldDecorator('keys', { initialValue: [] });
+    const keys = getFieldValue('keys');
+    console.log('keys', keys)
+    const formItems = keys.map((k, index) => (
       <Form.Item
-        {...(i === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-        label={i === 0 ? 'Passengers' : ''}
+        {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+        label={index === 0 ? 'Passengers' : ''}
         required={false}
         key={k}
       >
         {/* 这里通过索引赋值是有问题的 */}
-        {getFieldDecorator(`names${k}`, {
+        {getFieldDecorator(`names[${k}]`, {
           validateTrigger: ['onChange', 'onBlur'],
           rules: [{
             required: true,
             whitespace: true,
-            message: "Please input passenger's name or delete this field."
+            message: "Please input passenger's name or delete this field.",
           }],
         })(
-          <Input
-            onChange={(e) => this.onChange(e, i)}
-            placeholder="passenger name"
-            style={{ width: '60%', marginRight: 8 }}
-          />
+          <Input placeholder="passenger name" style={{ width: '60%', marginRight: 8 }} />
         )}
         {keys.length > 1 ? (
           <Icon
             className="dynamic-delete-button"
             type="minus-circle-o"
             disabled={keys.length === 1}
-            onClick={() => this.onRemove(i)}
+            onClick={() => this.remove(k)}
           />
         ) : null}
       </Form.Item>
@@ -111,7 +107,7 @@ class DynamicForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         {formItems}
         <Form.Item {...formItemLayoutWithOutLabel}>
-          <Button type="dashed" onClick={this.onAdd} style={{ width: '60%' }}>
+          <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
             <Icon type="plus" /> Add field
           </Button>
         </Form.Item>
@@ -124,4 +120,3 @@ class DynamicForm extends Component {
 }
 
 export default DynamicForm;
-// 数组索引遍历问题

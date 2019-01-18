@@ -138,6 +138,16 @@ const menuConfig = [
     routerPath: '/deleteIndex',
     title: 'deleteIndex',
     realPath: 'deleteIndex'
+  },
+  {
+    routerPath: '/dynamicForm',
+    title: 'DynamicForm',
+    realPath: 'FormHandle/DynamicForm'
+  },
+  {
+    routerPath: '/dynamicForm2',
+    title: 'DynamicForm2',
+    realPath: 'FormHandle/DynamicForm2'
   }
 ];
 export default menuConfig;
