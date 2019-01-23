@@ -1,6 +1,8 @@
 /**
  * Created by Administrator on 2018/9/15/015
  */
-import { ajaxFunc } from '@/http/tool'
+import { ajaxFunc } from '@/http/tool';
 
-export const fetchList = ajaxFunc('/travel/detail')
+export const fetchDetailList = ajaxFunc('/travel/detail');
+export const fetchCityList = ajaxFunc('travel/detail');
+export const fetchHome = ajaxFunc('travel/home');

@@ -54,11 +54,13 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "release": "standard-version"
+    "release": "standard-version",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.7.1",
     "clean-webpack-plugin": "^0.1.19",
+    "semantic-release": "^15.13.3",
     "standard-version": "^4.4.0",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpackbar": "^2.6.3"
