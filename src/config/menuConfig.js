@@ -148,6 +148,11 @@ const menuConfig = [
     routerPath: '/dynamicForm2',
     title: 'DynamicForm2',
     realPath: 'FormHandle/DynamicForm2'
+  },
+  {
+    routerPath: '/hooks',
+    title: 'reactHooks',
+    realPath: 'react-hooks/demo1'
   }
 ];
 export default menuConfig;
