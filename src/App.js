@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
-import SideMenu from '@/components/SideMenu'
+import React, { Component } from 'react';
+import SideMenu from '@/components/SideMenu';
+
 class App extends Component {
-  render() {
+  render () {
     return (
       <div className="app">
-        <SideMenu />
+        <SideMenu/>
         <div className="content">
           {this.props.children}
         </div>
-      </div >
-    )
+      </div>
+    );
   }
 }
 
-export default App
+export default App;
