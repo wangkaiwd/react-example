@@ -2,41 +2,6 @@ import React, { Component } from 'react';
 import { Input, Form, Table } from 'antd';
 import styles from './tableEdit.less';
 
-const data = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i.toString(),
-    name: `name ${i}`,
-    age: 18,
-    address: `New York ${i}`
-  });
-}
-
-const columns = [
-  {
-    title: 'name',
-    dataIndex: 'name',
-    width: '25%',
-  },
-  {
-    title: 'age',
-    dataIndex: 'age',
-    width: '15%',
-  },
-  {
-    title: 'address',
-    dataIndex: 'address',
-    width: '40%',
-  },
-  {
-    title: 'operation',
-    dataIndex: 'operation',
-    render: () => {
-      return <a href="javascript:;">delete</a>;
-    }
-  }
-];
-
 @Form.create()
 class TableEdit extends Component {
   state = {
