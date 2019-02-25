@@ -153,6 +153,11 @@ const menuConfig = [
     routerPath: '/hooks',
     title: 'reactHooks',
     realPath: 'react-hooks/demo1'
+  },
+  {
+    routerPath: '/tableEdit',
+    title: 'tableEdit',
+    realPath: 'TableTechnique/tableEdit'
   }
 ];
 export default menuConfig;
