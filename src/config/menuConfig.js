@@ -158,6 +158,11 @@ const menuConfig = [
     routerPath: '/tableEdit',
     title: 'tableEdit',
     realPath: 'TableTechnique/tableEdit'
+  },
+  {
+    routerPath: '/formSelfDefine',
+    title: 'formSelfDefine',
+    realPath: 'formSelfDefine'
   }
 ];
 export default menuConfig;
