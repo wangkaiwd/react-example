@@ -5,6 +5,11 @@ import {
 
 const { Option } = Select;
 
+// 自定义组件思路：
+//  1. 当改变组件中输入内容的时候，会通过当前的onChange事件触发组件传来的onChange方法
+//  2. onChange方法会改变form组件传来的value属性，在父组件传来的props发生改变的时候，会触发getDerivedStateFromProps函数
+//  3. getDerivedStateFromProps函数会根据传来的props中的value属性来更新state
+//  4. 自组件中根据props.value属性生成的state来更新状态
 class Child extends Component {
   // static getDerivedStateFromProps(props,state)
   // 可以通过传来的props更新当前组件的state
