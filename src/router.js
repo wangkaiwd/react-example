@@ -13,9 +13,12 @@ import Loading from '@/components/Loading';
 // 缩小了bundle.js(缩小了一半)，但是新增了一个 1.chunk.js(比较大)
 // 目前浏览器报错: 官方issue(https://github.com/ReactTraining/react-router/issues/6420)
 // 暂时忽略报错信息，之后的话官方会进行fixed
-const RouteConfig = () => {
+const RouteConfig = (props) => {
   return (
     <Router>
+      {/* <Suspense fallback={<Loading />}>
+        <Route exact path='/test-01' component={getComponent('comment/commentBox')} />
+      </Suspense> */}
       <App>
         {/* 错误边界 */}
         <ErrorBoundary>

@@ -10,6 +10,8 @@ const comments = [
 ]
 class CommentBox extends Component {
   render() {
+    // 居然可以直接使用this.props.history.push
+    // console.log('commentBox', this.props.location)
     return (
       <div className={styles['comment-box']}>
         <h3 className={styles.title}>
