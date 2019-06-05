@@ -2,6 +2,9 @@ import React from 'react';
 import { Button } from 'antd';
 import './assets/styles/base.scss';
 
+const element = <h1 className={'greeting'}>hello world</h1>;
+console.log('element', element);
+
 function App () {
   return (
     <div className="App">
