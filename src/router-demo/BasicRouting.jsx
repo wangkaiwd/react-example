@@ -1,3 +1,9 @@
+/**
+ * 建立Index,About,Users3个组件，并通过/,/about,/users来进行路由跳转切换组件
+ *
+ * 需要注意的是`react-router-dom`是在组件中通过Route标签来进行展示，并不是像vue一样通过配置文件，结合router-view来进行展示，
+ * 整体的设计思路还是有很大的区别
+ */
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -13,7 +19,7 @@ function Users () {
   return <h2>Users</h2>;
 }
 
-function AppRouter () {
+function BasicRouting () {
   return (
     <Router>
       <div>
@@ -26,18 +32,17 @@ function AppRouter () {
               <Link to="/about/">About</Link>
             </li>
             <li>
-              <Link to="/users/">Users</Link>
+              <Link to="/users">Users</Link>
             </li>
           </ul>
         </nav>
-
         <Route path="/" exact component={Index}/>
-        <Route path="/about/" component={About}/>
-        <Route path="/users/" component={Users}/>
+        <Route path="/about" component={About}/>
+        <Route path="/users" component={Users}/>
       </div>
     </Router>
   );
 }
 
-export default AppRouter;
+export default BasicRouting;
 
