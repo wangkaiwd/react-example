@@ -1,30 +1,43 @@
 import React from 'react';
-import { Button } from 'antd';
-import './assets/styles/base.scss';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const element = <h1 className={'greeting'}>hello world</h1>;
-console.log('element', element);
+function Index () {
+  return <h2>Home</h2>;
+}
 
-function App () {
+function About () {
+  return <h2>About</h2>;
+}
+
+function Users () {
+  return <h2>Users</h2>;
+}
+
+function AppRouter () {
   return (
-    <div className="App">
-      App
-      <Button type={'primary'}>antDesign按钮</Button>
-      <a href="javascript:;">link</a>
-      <ul>
-        <li>内容1</li>
-        <li>内容2</li>
-        <li>内容3</li>
-        <li>内容4</li>
-        <li>内容5</li>
-        <li>内容6</li>
-        <li>内容7</li>
-        <li>内容8</li>
-        <li>内容9</li>
-        <li>内容10</li>
-      </ul>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about/">About</Link>
+            </li>
+            <li>
+              <Link to="/users/">Users</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Route path="/" exact component={Index}/>
+        <Route path="/about/" component={About}/>
+        <Route path="/users/" component={Users}/>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default AppRouter;
+

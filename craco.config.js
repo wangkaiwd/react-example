@@ -4,5 +4,8 @@ module.exports = {
   eslint: {
     enable: false
   },
+  devServer: {
+    open: false
+  },
   plugins: [{ plugin: CracoAntDesignPlugin }]
 };
