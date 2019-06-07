@@ -3,7 +3,7 @@ import { Menu, Icon, Button, Layout, Card } from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
 import './app.scss';
-import SideMenu from './layout/sideMenu';
+import SideMenu from 'layout/sideMenu';
 
 function App (props) {
   return (

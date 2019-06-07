@@ -3,39 +3,7 @@ import { Menu, Icon, Button, Layout } from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
-const menuList = [
-  {
-    key: '/index',
-    icon: '',
-    title: 'index',
-    children: [
-      {
-        key: '/index/1',
-        icon: '',
-        title: 'index1',
-      }
-    ],
-  },
-  {
-    key: '/home',
-    icon: '',
-    title: 'home',
-    children: [
-      {
-        key: '/home/1',
-        icon: '',
-        title: 'home1',
-        children: [
-          {
-            key: '/home/1/1',
-            icon: '',
-            title: 'home11'
-          }
-        ]
-      }
-    ],
-  }
-];
+import menuList from 'router/router.config';
 
 class SideMenu extends Component {
   state = {
