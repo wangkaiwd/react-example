@@ -15,7 +15,7 @@ function App (props) {
       <Layout>
         <Content>
           <Card className={'app-content-card'}>
-            content
+            {props.children}
           </Card>
         </Content>
       </Layout>

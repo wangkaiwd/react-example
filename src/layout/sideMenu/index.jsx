@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Button, Layout } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -26,8 +27,8 @@ class SideMenu extends Component {
 
   getMenuItem = (menu) => (
     <Menu.Item key={menu.key}>
-      <Icon type={menu.icon}/>
-      <span>{menu.title}</span>
+      {menu.icon && <Icon type={menu.icon}/>}
+      <Link to={menu.key}>{menu.title}</Link>
     </Menu.Item>
   );
   getSubMenuItem = (menu) => (
@@ -35,7 +36,7 @@ class SideMenu extends Component {
       key={menu.key}
       title={
         <span>
-          <Icon type={menu.icon}/>
+          {menu.icon && <Icon type={menu.icon}/>}
           <span>{menu.title}</span>
         </span>
       }
