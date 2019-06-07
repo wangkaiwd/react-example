@@ -1,13 +1,25 @@
 import React from 'react';
-import BasicRouting from './router-demo/BasicRouting';
-import NestedRouting from './router-demo/NestedRouting';
+import { Menu, Icon, Button, Layout, Card } from 'antd';
+
+const { Header, Content, Footer, Sider } = Layout;
+import './app.scss';
+import SideMenu from './layout/sideMenu';
 
 function App (props) {
   return (
-    <div>
-      {/*<BasicRouting/>*/}
-      <NestedRouting/>
-    </div>
+    <Layout className={'app'}>
+      <Sider width={260}>
+        <div className="logo">React-Example</div>
+        <SideMenu/>
+      </Sider>
+      <Layout>
+        <Content>
+          <Card className={'app-content-card'}>
+            content
+          </Card>
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
 
