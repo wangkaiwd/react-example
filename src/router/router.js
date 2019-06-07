@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import App from '../App';
 import { routerConfig } from './router.config';
 
-const routerRoot = (
+const RouterRoot = () => (
   <Router>
     <App>
       <Suspense fallback={<Spin size={'large'}/>}>
@@ -24,4 +24,4 @@ const routerRoot = (
     </App>
   </Router>
 );
-export default routerRoot;
+export default RouterRoot;
