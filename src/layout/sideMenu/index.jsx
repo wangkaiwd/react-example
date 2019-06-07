@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button, Layout } from 'antd';
+import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 
-const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 import menuList from 'router/router.config';
 
