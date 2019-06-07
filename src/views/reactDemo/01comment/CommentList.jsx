@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Index extends Component {
+class CommentList extends Component {
   render () {
     return (
       <div>
-        react-demo
+        CommentList
       </div>
     );
   }
 }
 
-export default Index;
+export default CommentList;

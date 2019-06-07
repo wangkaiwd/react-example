@@ -11,21 +11,29 @@ const menuList = [
         key: '/reactRouter/basicRouting',
         icon: '',
         title: 'BasicRouting',
-        component: lazyLoading('router-demo/BasicRouting'),
+        component: lazyLoading('routerDemo/BasicRouting'),
       },
       {
         key: '/reactRouter/nestedRouting',
         icon: '',
         title: 'NestedRouting',
-        component: lazyLoading('router-demo/NestedRouting'),
+        component: lazyLoading('routerDemo/NestedRouting'),
       },
     ],
   },
-  // {
-  //   key: '/react-demo',
-  //   icon: '',
-  //   title: 'react-demo',
-  // }
+  {
+    key: '/reactDemo',
+    icon: '',
+    title: 'reactDemo',
+    children: [
+      {
+        key: '/reactDemo/commentBox',
+        icon: '',
+        title: 'commentBox',
+        component: lazyLoading('reactDemo/01comment/CommentBox'),
+      },
+    ]
+  }
 ];
 export default menuList;
 
