@@ -16,6 +16,7 @@ module.exports = {
       layout: absPath('layout'),
       styles: absPath('assets/styles'),
       views: absPath('views'),
+      components: absPath('components'),
     },
   },
   devServer: {

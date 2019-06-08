@@ -1,5 +1,4 @@
-.app {
-  height: 100vh;
+.demo-sider {
   .logo {
     height: 32px;
     background: rgba(255, 255, 255, 0.2);
@@ -8,8 +7,5 @@
     color: white;
     line-height: 32px;
     text-align: center;
-  }
-  &-content-card {
-    height: 100%;
   }
 }

@@ -1,23 +1,20 @@
 import React from 'react';
-import { Menu, Icon, Button, Layout, Card } from 'antd';
-
-const { Header, Content, Footer, Sider } = Layout;
-import './app.scss';
-import SideMenu from 'layout/sideMenu';
+import { Layout } from 'antd';
+import DemoSider from 'layout/DemoSider/DemoSider';
+import DemoHeader from 'layout/DemoHeader/DemoHeader';
+import DemoFooter from 'layout/DemoFooter/DemoFooter';
+import DemoContent from 'layout/DemoContent/DemoContent';
 
 function App (props) {
   return (
     <Layout className={'app'}>
-      <Sider width={260}>
-        <div className="logo">React-Example</div>
-        <SideMenu/>
-      </Sider>
+      <DemoSider/>
       <Layout>
-        <Content>
-          <Card className={'app-content-card'}>
-            {props.children}
-          </Card>
-        </Content>
+        <DemoHeader/>
+        <DemoContent>
+          {props.children}
+        </DemoContent>
+        <DemoFooter/>
       </Layout>
     </Layout>
   );
