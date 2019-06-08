@@ -5,12 +5,18 @@
     width: 60px;
     height: 60px;
     background-color: pink;
+    flex-shrink: 0;
   }
   &-user {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     padding-left: 20px;
+    overflow: hidden;
+  }
+  &-user-speak {
+    width: 100%;
     @include ell;
   }
 }
