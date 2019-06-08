@@ -9,12 +9,12 @@ function CommentListItem (props) {
         <img src={commentItem.avatar} alt=""/>
       </div>
       <div className={'comment-list-item-user'}>
-        <p className={'comment-list-item-user-name'}>
+        <div className={'comment-list-item-user-name'}>
           <a href="javascript:;">{commentItem.username}</a>
-        </p>
-        <p className={'comment-list-item-user-speak'}>
+        </div>
+        <div className={'comment-list-item-user-speak'}>
           {commentItem.comment}
-        </p>
+        </div>
       </div>
     </div>
   );
