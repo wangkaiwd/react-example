@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import SideMenu from 'components/sideMenu';
-import './demoSider.scss';
+import './DemoSider.scss';
 
 const { Sider } = Layout;
 

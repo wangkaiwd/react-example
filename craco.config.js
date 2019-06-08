@@ -7,6 +7,13 @@ module.exports = {
   eslint: {
     enable: false
   },
+  // style: {
+  //   sass: {
+  //     loaderOptions: {
+  //       includePaths: [absPath('assets/styles/mixins.scss')]
+  //     }
+  //   },
+  // },
   webpack: {
     entry: {
       main: './scr/index.jsx'
@@ -17,6 +24,7 @@ module.exports = {
       styles: absPath('assets/styles'),
       views: absPath('views'),
       components: absPath('components'),
+      mock: absPath('mock'),
     },
   },
   devServer: {

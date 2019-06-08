@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import 'styles/base.scss';
 import * as serviceWorker from './serviceWorker';
+import './mock';
 import RouterRoot from 'router/router';
 
 ReactDOM.render(<RouterRoot/>, document.getElementById('root'));

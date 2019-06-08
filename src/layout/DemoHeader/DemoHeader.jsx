@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import './demoHeader.scss';
+import './DemoHeader.scss';
 
 const { Header } = Layout;
 

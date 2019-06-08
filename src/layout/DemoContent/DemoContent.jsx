@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Card } from 'antd';
-import './demoContent.scss';
+import './DemoContent.scss';
 
 const { Content } = Layout;
 
