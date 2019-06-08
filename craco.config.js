@@ -26,6 +26,11 @@ module.exports = {
       components: absPath('components'),
       mock: absPath('mock'),
     },
+    configure: {
+      resolve: {
+        extensions: ['.js', '.jsx', '.json', '.scss']
+      }
+    }
   },
   devServer: {
     open: false

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'styles/base.scss';
+import 'styles/base';
 import * as serviceWorker from './serviceWorker';
 import './mock';
 import RouterRoot from 'router/router';
