@@ -13,6 +13,10 @@ import './TabSelector.scss';
  *        1. 暴露一个api：让用户可以在tab切换的时候做一些事情
  *        2. 由于传入的props不能修改，我们需要将最新的值通过回调函数的参数传回来，然后通过this.setState()进行修改，
  *           之后再render的时候就会将最新的props传入
+ *
+ * 和`vue`相比的几个问题：
+ *  1. .sync可以通过this.$emit来将改动的值自动设置，而react只能手动通过onChange将参数传回进行更改
+ *  2. class的绑定并不灵活，还得自己来处理动态class的情况
  */
 class TabSelector extends Component {
   itemClasses = (option) => {
