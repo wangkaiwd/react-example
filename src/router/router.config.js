@@ -32,11 +32,16 @@ const menuList = [
         title: 'commentBox',
         component: lazyLoading('reactDemo/01comment/CommentBox'),
       },
+      {
+        key: '/reactDemo/tabSelector',
+        icon: '',
+        title: 'tabSelector',
+        component: lazyLoading('reactDemo/02tabSelector/TabSelector'),
+      },
     ]
   }
 ];
 export default menuList;
-
 // 只考虑2级菜单，3级以上还要考虑好的方法
 const createRouterConfig = (menuList) => {
   let routerConfig = [];
