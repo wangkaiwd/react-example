@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { message } from 'antd';
 import './ChatApp.scss';
 import MessageList from './MessageList';
