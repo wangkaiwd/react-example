@@ -30,6 +30,7 @@ module.exports = {
       views: absPath('views'),
       components: absPath('components'),
       mock: absPath('mock'),
+      helper: absPath('helper'),
     },
     configure: {
       resolve: {
