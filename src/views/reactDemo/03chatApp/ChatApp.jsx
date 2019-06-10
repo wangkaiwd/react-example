@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Col, Icon, Input, List, Row } from 'antd';
+import { message } from 'antd';
 import './ChatApp.scss';
+import MessageList from './MessageList';
+import InputBox from './InputBox';
 
 class ChatApp extends Component {
   state = {
@@ -15,6 +17,7 @@ class ChatApp extends Component {
 
   onClickSend = () => {
     let { inputMessages, value } = this.state;
+    if (value.trim() === '') return message.warn('请输入内容后再提交！');
     const key = this.createId();
     this.setState({
       inputMessages: [...inputMessages, { key, value }],
@@ -36,38 +39,25 @@ class ChatApp extends Component {
     const { value } = e.target;
     this.setState({ value });
   };
+  updateInputMessages = newMessages => this.setState({ inputMessages: newMessages });
+  updateKeys = newKeys => this.keys = newKeys;
 
   render () {
     const { inputMessages, value } = this.state;
     return (
-      <Fragment>
-        <Row className={'chat-app'} type={'flex'} gutter={8}>
-          <Col span={8}>
-            <Input placeholder={'please write your thinking'} value={value} onChange={this.onChange}/>
-          </Col>
-          <Col>
-            <Button type="primary" onClick={this.onClickSend}>Send</Button>
-          </Col>
-        </Row>
-        <Row>
-          <List
-            bordered
-            size={'small'}
-            dataSource={inputMessages}
-            renderItem={item => (
-              <List.Item key={item.key} className={'chat-app-item'}>
-                <span className={'chat-app-item-text'}>
-                  {item.value}
-                </span>
-                <span className={'chat-app-item-tools'}>
-                  <a href="javascript:;"><Icon type="edit"/></a>
-                  <a href="javascript:;"><Icon type="delete"/></a>
-                </span>
-              </List.Item>
-            )}
-          />
-        </Row>
-      </Fragment>
+      <div className={'chat-app'}>
+        <InputBox
+          value={value}
+          onChange={this.onChange}
+          onClickSend={this.onClickSend}
+        />
+        <MessageList
+          inputMessages={inputMessages}
+          keys={this.keys}
+          updateInputMessages={this.updateInputMessages}
+          updateKeys={this.updateKeys}
+        />
+      </div>
     );
   }
 }
