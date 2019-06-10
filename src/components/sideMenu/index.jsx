@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import menuList, { routerConfig } from 'router/router.config';
+import storage from 'helper/storage';
 
 const firstLevelSubMenu = menuList
   .map(item => {if (item.children) {return item.key;}})
@@ -12,7 +13,8 @@ class SideMenu extends Component {
   state = {
     menuTree: [],
     selectedKeys: [],
-    firstLevelSubMenu
+    firstLevelSubMenu,
+    openKeys: storage.get('openKeys')
   };
 
   componentDidMount () {
@@ -40,6 +42,7 @@ class SideMenu extends Component {
       newOpenKeys = openKeys;
     }
     this.setState({ openKeys: newOpenKeys });
+    storage.set('openKeys', newOpenKeys);
   };
   onSelect = ({ selectedKeys }) => {
     this.setState({ selectedKeys });
