@@ -3,12 +3,16 @@ import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import menuList, { routerConfig } from 'router/router.config';
 
+const firstLevelSubMenu = menuList
+  .map(item => {if (item.children) {return item.key;}})
+  .filter(Boolean);
 const { SubMenu } = Menu;
 @withRouter
 class SideMenu extends Component {
   state = {
     menuTree: [],
-    selectedKeys: []
+    selectedKeys: [],
+    firstLevelSubMenu
   };
 
   componentDidMount () {
@@ -27,7 +31,15 @@ class SideMenu extends Component {
     this.setState({ selectedKeys });
   };
   onOpenChange = (openKeys) => {
-    console.log('openKeys', openKeys);
+    const { firstLevelSubMenu } = this.state;
+    const lastOpenKeys = openKeys[openKeys.length - 1];
+    let newOpenKeys = [];
+    if (firstLevelSubMenu.includes(lastOpenKeys)) {
+      newOpenKeys = [lastOpenKeys];
+    } else {
+      newOpenKeys = openKeys;
+    }
+    this.setState({ openKeys: newOpenKeys });
   };
   onSelect = ({ selectedKeys }) => {
     this.setState({ selectedKeys });
@@ -61,10 +73,11 @@ class SideMenu extends Component {
   );
 
   render () {
-    const { menuTree, selectedKeys } = this.state;
+    const { menuTree, selectedKeys, openKeys } = this.state;
     return (
       <Menu
         selectedKeys={selectedKeys}
+        openKeys={openKeys}
         onOpenChange={this.onOpenChange}
         onSelect={this.onSelect}
         mode="inline"
