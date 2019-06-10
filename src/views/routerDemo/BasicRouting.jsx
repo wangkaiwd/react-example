@@ -10,39 +10,35 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 function Index () {
   return <h2>Home</h2>;
 }
-
 function About () {
   return <h2>About</h2>;
 }
-
 function Users () {
   return <h2>Users</h2>;
 }
-
-function BasicRouting () {
+function BasicRouting ({ match }) {
   return (
     <Router>
       <div>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to={`${match.url}/`}>Home</Link>
             </li>
             <li>
-              <Link to="/about/">About</Link>
+              <Link to={`${match.url}/about`}>About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to={`${match.url}/users`}>Users</Link>
             </li>
           </ul>
         </nav>
-        <Route path="/" exact component={Index}/>
-        <Route path="/about" component={About}/>
-        <Route path="/users" component={Users}/>
+        <Route path={`${match.path}/`} exact component={Index}/>
+        <Route path={`${match.path}/about`} component={About}/>
+        <Route path={`${match.url}/users`} component={Users}/>
       </div>
     </Router>
   );
 }
-
 export default BasicRouting;
 

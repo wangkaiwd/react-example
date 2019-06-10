@@ -4,6 +4,10 @@
  * 在Topics组件下设置下边的子路由：
  *  1. 默认子路由： <h3>Please select a topic.</h3>
  *  2. 通过id设置的动态路由：Topic
+ *
+ * 路由属性match.path和match.url的区别：
+ *  当设置路由为'/topics/:id'时，通过Link或其它方式进行跳转时需要指明明确的地址：如：/topics/Component,这里使用match.url
+ *  当我们要设置Route的path属性时，我们需要通过":"来指定路由中的变量：如： <Route path="/topics/:id/Component"/>,这里就应该使用match.path
  */
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
