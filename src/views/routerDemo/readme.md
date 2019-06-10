@@ -8,4 +8,4 @@
 * `Prompt`: 满足条件时提示用户是否离开当前页面
 * `Redirect`： 导航到一个新的地址
 * `Route`： 根据匹配的`path`来展示`component`对应的组件
-* `Switch`: 渲染`Switch`中第一个`Route`或者`Redirect`匹配到的地址
+* `Switch`: 渲染`Switch`中第一个`Route`或者`Redirect`匹配到的地址对应的组件
