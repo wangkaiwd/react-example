@@ -1,0 +1,11 @@
+.chat-app {
+  &-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-item-tools {
+    a:first-child {
+      margin-right: 8px;
+    }
+  }
+}

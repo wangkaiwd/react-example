@@ -38,6 +38,12 @@ const menuList = [
         title: 'tabSelector',
         component: lazyLoading('reactDemo/02tabSelector/TabSelector'),
       },
+      {
+        key: '/reactDemo/chatApp',
+        icon: '',
+        title: 'chatApp',
+        component: lazyLoading('reactDemo/03chatApp/ChatApp'),
+      },
     ]
   }
 ];
