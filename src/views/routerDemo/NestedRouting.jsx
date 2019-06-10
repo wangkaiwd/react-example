@@ -34,7 +34,6 @@ function DefaultTopic () {
   return <h3>Please select a topic</h3>;
 }
 function Topics ({ match }) {
-  console.log('TopicsMatch', match);
   return (
     <div>
       <h2>Topics</h2>
@@ -64,7 +63,6 @@ function Topics ({ match }) {
 //     a. 将父组件中的路由对象传入
 //     b. 通过withRouter将该组件进行包装，在props中提供相应的属性和方法
 function Header ({ match }) {
-  console.log('headerMatch', match);
   return (
     <ul>
       <li>
