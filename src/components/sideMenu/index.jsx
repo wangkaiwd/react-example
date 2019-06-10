@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
-import { Link } from 'react-router-dom';
-
-const { SubMenu } = Menu;
+import { Link, withRouter } from 'react-router-dom';
 import menuList from 'router/router.config';
 
+const { SubMenu } = Menu;
+@withRouter
 class SideMenu extends Component {
   state = {
     menuTree: []
@@ -23,7 +23,6 @@ class SideMenu extends Component {
       return this.getMenuItem(menu);
     });
   };
-
   getMenuItem = (menu) => (
     <Menu.Item key={menu.key}>
       {menu.icon && <Icon type={menu.icon}/>}
@@ -45,11 +44,10 @@ class SideMenu extends Component {
   );
 
   render () {
+    console.log('props', this.props);
     const { menuTree } = this.state;
     return (
       <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
         mode="inline"
         theme="dark"
       >
@@ -58,5 +56,4 @@ class SideMenu extends Component {
     );
   }
 }
-
 export default SideMenu;

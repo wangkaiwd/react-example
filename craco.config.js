@@ -1,7 +1,6 @@
 const CracoAntDesignPlugin = require('craco-antd');
 const path = require('path');
 const { whenDev, whenProd } = require('@craco/craco');
-
 const absPath = dir => path.resolve(__dirname, `./src/${dir}`);
 module.exports = {
   eslint: {
@@ -14,6 +13,12 @@ module.exports = {
   //     }
   //   },
   // },
+  babel: {
+    plugins: [
+      ['@babel/plugin-proposal-decorators', { legacy: true }],
+      ['@babel/plugin-proposal-class-properties', { loose: true }]
+    ]
+  },
   webpack: {
     entry: {
       main: './scr/index.jsx'
