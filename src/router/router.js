@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Spin } from 'antd';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import App from '../App';
 import { routerConfig } from './router.config';
 

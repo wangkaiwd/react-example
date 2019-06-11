@@ -1,4 +1,5 @@
 const CracoAntDesignPlugin = require('craco-antd');
+const WebpackBar = require('webpackbar');
 const path = require('path');
 const { whenDev, whenProd } = require('@craco/craco');
 const absPath = dir => path.resolve(__dirname, `./src/${dir}`);
@@ -36,7 +37,10 @@ module.exports = {
       resolve: {
         extensions: ['.js', '.jsx', '.json', '.scss']
       }
-    }
+    },
+    plugins: [
+      new WebpackBar()
+    ]
   },
   devServer: {
     open: false

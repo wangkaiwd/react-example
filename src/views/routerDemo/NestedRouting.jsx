@@ -10,7 +10,7 @@
  *  当我们要设置Route的path属性时，我们需要通过":"来指定路由中的变量：如： <Route path="/topics/:id/Component"/>,这里就应该使用match.path
  */
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 function NestedRouting (props) {
   const { match } = props;

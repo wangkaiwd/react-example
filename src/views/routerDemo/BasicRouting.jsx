@@ -5,7 +5,7 @@
  * 整体的设计思路还是有很大的区别
  */
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 function Index () {
   return <h2>Home</h2>;
