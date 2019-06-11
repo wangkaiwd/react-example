@@ -3,24 +3,24 @@ import React from 'react';
 const lazyLoading = dir => React.lazy(() => import(`views/${dir}`));
 const menuList = [
   {
-    key: '/reactRouter',
+    path: '/reactRouter',
     icon: '',
     title: 'reactRouter',
-    children: [
+    routes: [
       {
-        key: '/reactRouter/basicRouting',
+        path: '/reactRouter/basicRouting',
         icon: '',
         title: 'BasicRouting',
         component: lazyLoading('routerDemo/BasicRouting'),
       },
       {
-        key: '/reactRouter/nestedRouting',
+        path: '/reactRouter/nestedRouting',
         icon: '',
         title: 'NestedRouting',
         component: lazyLoading('routerDemo/NestedRouting'),
       },
       {
-        key: '/reactRouter/routeConfig',
+        path: '/reactRouter/routeConfig',
         icon: '',
         title: 'RouteConfig',
         component: lazyLoading('routerDemo/RouteConfig'),
@@ -28,30 +28,30 @@ const menuList = [
     ],
   },
   {
-    key: '/reactDemo',
+    path: '/reactDemo',
     icon: '',
     title: 'reactDemo',
-    children: [
+    routes: [
       {
-        key: '/reactDemo/commentBox',
+        path: '/reactDemo/commentBox',
         icon: '',
         title: 'commentBox',
         component: lazyLoading('reactDemo/01comment/CommentBox'),
       },
       {
-        key: '/reactDemo/tabSelector',
+        path: '/reactDemo/tabSelector',
         icon: '',
         title: 'tabSelector',
         component: lazyLoading('reactDemo/02tabSelector/TabSelector'),
       },
       {
-        key: '/reactDemo/chatApp',
+        path: '/reactDemo/chatApp',
         icon: '',
         title: 'chatApp',
         component: lazyLoading('reactDemo/03chatApp/ChatApp'),
       },
       {
-        key: '/reactDemo/clock',
+        path: '/reactDemo/clock',
         icon: '',
         title: 'clock',
         component: lazyLoading('reactDemo/04clock/Clock'),
@@ -67,8 +67,8 @@ const createRouterConfig = (menuList) => {
     if (menu.component) {
       routerConfig.push(menu);
     }
-    if (menu.children) {
-      const temp = createRouterConfig(menu.children);
+    if (menu.routes) {
+      const temp = createRouterConfig(menu.routes);
       if (temp.length > 0) {
         routerConfig = [...routerConfig, ...temp];
       }

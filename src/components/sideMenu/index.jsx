@@ -5,7 +5,7 @@ import menuList, { routerConfig } from 'router/router.config';
 import storage from 'helper/storage';
 
 const firstLevelSubMenu = menuList
-  .map(item => {if (item.children) {return item.key;}})
+  .map(item => {if (item.routes) {return item.path;}})
   .filter(Boolean);
 const { SubMenu } = Menu;
 @withRouter
@@ -25,10 +25,10 @@ class SideMenu extends Component {
 
   getSelectedKeys = () => {
     const { pathname } = this.props.location;
-    const target = routerConfig.filter(router => pathname.includes(router.key));
+    const target = routerConfig.filter(router => pathname.includes(router.path));
     const selectedKeys = [];
     if (target.length > 0) {
-      selectedKeys.push(target[0].key);
+      selectedKeys.push(target[0].path);
     }
     this.setState({ selectedKeys });
   };
@@ -49,21 +49,21 @@ class SideMenu extends Component {
   };
   createMenus = (menuList) => {
     return menuList.map(menu => {
-      if (menu.children) {
+      if (menu.routes) {
         return this.getSubMenuItem(menu);
       }
       return this.getMenuItem(menu);
     });
   };
   getMenuItem = (menu) => (
-    <Menu.Item key={menu.key}>
+    <Menu.Item key={menu.path}>
       {menu.icon && <Icon type={menu.icon}/>}
-      <Link to={menu.key}>{menu.title}</Link>
+      <Link to={menu.path}>{menu.title}</Link>
     </Menu.Item>
   );
   getSubMenuItem = (menu) => (
     <SubMenu
-      key={menu.key}
+      key={menu.path}
       title={
         <span>
           {menu.icon && <Icon type={menu.icon}/>}
@@ -71,7 +71,7 @@ class SideMenu extends Component {
         </span>
       }
     >
-      {this.createMenus(menu.children)}
+      {this.createMenus(menu.routes)}
     </SubMenu>
   );
 
