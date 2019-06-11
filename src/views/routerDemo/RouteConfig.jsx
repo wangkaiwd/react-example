@@ -4,7 +4,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 function Sandwiches () {
   return <h2>Sandwiches</h2>;
 }
-function Tacos ({ routes }) {
+function Tacos (props) {
   return (
     <div>
       <h2>Tacos</h2>
@@ -16,10 +16,7 @@ function Tacos ({ routes }) {
           <Link to="/reactRouter/routeConfig/tacos/cart">Cart</Link>
         </li>
       </ul>
-
-      {routes.map((route, i) => (
-        <RouteWithSubRoutes key={i} {...route} />
-      ))}
+      {props.children}
     </div>
   );
 }
@@ -29,6 +26,11 @@ function Bus () {
 function Cart () {
   return <h3>Cart</h3>;
 }
+// 使用routes配置的时候需要考虑：
+//  1. 该路由是否需要参数
+//  2. 该路由是否需要登录后才能访问
+//  3. 该路由是否有权限访问
+//  4. 该路由是否需要在侧边栏展示
 // then our route config
 const routes = [
   {
@@ -50,36 +52,56 @@ const routes = [
     ]
   }
 ];
+const childRoute = (route) => {
+  if (route.routes) {
+    return route.routes.map(route => {
+      return <RouteWithSubRoutes {...route} key={route.path}/>;
+    });
+  }
+  return null;
+};
 // wrap <Route> and use this everywhere instead, then when
 // sub routes are added to any route it'll work
 function RouteWithSubRoutes (route) {
   return (
     <Route
       path={route.path}
-      render={props => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes}/>
-      )}
+      render={props => {
+        // 相当于一个组件的props，这样生成的路由对应的组件都是通过render渲染出来的
+        // console.log('props', props);
+        return (
+          // pass the sub-routes down to keep nesting
+          <route.component {...props} routes={route.routes}>
+            {childRoute(route)}
+          </route.component>
+        );
+      }}
     />
   );
 }
+const Page = (props) => {
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/reactRouter/routeConfig/tacos">Tacos</Link>
+        </li>
+        <li>
+          <Link to="/reactRouter/routeConfig/sandwiches">Sandwiches</Link>
+        </li>
+      </ul>
+      {props.children}
+    </div>
+  );
+};
 function RouteConfig () {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/reactRouter/routeConfig/tacos">Tacos</Link>
-          </li>
-          <li>
-            <Link to="/reactRouter/routeConfig/sandwiches">Sandwiches</Link>
-          </li>
-        </ul>
-
+      <Page>
         {routes.map((route, i) => (
           <RouteWithSubRoutes key={i} {...route} />
         ))}
-      </div>
+      </Page>
     </Router>
   );
 }
