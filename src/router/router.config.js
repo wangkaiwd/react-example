@@ -44,6 +44,12 @@ const menuList = [
         title: 'chatApp',
         component: lazyLoading('reactDemo/03chatApp/ChatApp'),
       },
+      {
+        key: '/reactDemo/clock',
+        icon: '',
+        title: 'clock',
+        component: lazyLoading('reactDemo/04clock/Clock'),
+      },
     ]
   }
 ];
