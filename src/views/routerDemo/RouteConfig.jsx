@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 function Sandwiches () {
   return <h2>Sandwiches</h2>;
@@ -20,8 +20,19 @@ function Tacos (props) {
     </div>
   );
 }
-function Bus () {
-  return <h3>Bus</h3>;
+function Bus (props) {
+  return (
+    <div>
+      <h3>Bus</h3>
+      <ul>
+        <li><Link to={'/reactRouter/routeConfig/tacos/bus/bus1'}>bus1</Link></li>
+      </ul>
+      {props.children}
+    </div>
+  );
+}
+function Bus1 () {
+  return <h3>Bus1</h3>;
 }
 function Cart () {
   return <h3>Cart</h3>;
@@ -43,7 +54,13 @@ const routes = [
     routes: [
       {
         path: '/reactRouter/routeConfig/tacos/bus',
-        component: Bus
+        component: Bus,
+        routes: [
+          {
+            component: Bus1,
+            path: '/reactRouter/routeConfig/tacos/bus/bus1'
+          }
+        ]
       },
       {
         path: '/reactRouter/routeConfig/tacos/cart',
@@ -54,9 +71,13 @@ const routes = [
 ];
 const childRoute = (route) => {
   if (route.routes) {
-    return route.routes.map(route => {
-      return <RouteWithSubRoutes {...route} key={route.path}/>;
-    });
+    return (
+      <Switch>
+        {route.routes.map(route => {
+          return <RouteWithSubRoutes {...route} key={route.path}/>;
+        })}
+      </Switch>
+    );
   }
   return null;
 };
@@ -98,9 +119,11 @@ function RouteConfig () {
   return (
     <Router>
       <Page>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
       </Page>
     </Router>
   );
