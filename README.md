@@ -65,3 +65,26 @@
 * 当`React`元素为用户自定义组件时，它会将`JSX`所接收的属性(`attibute`)转换为单个对象传递给组件，这个对象被称之为`props`
 * 组件名称必须以大写字母开头，`React`会将以小写字母开头的组件视为原生`DOM`标签
 * 所有`React`组件都必须像纯函数一样保护它们的`props`不被更改
+
+#### `state` & 生命周期
+* `state`与`props`类似，但是`state`是私有的，并且完全受控于当前组件
+* 尽管`this.state`和`this.props`是`React`本身设置的，且都拥有特殊的含义，但是其实你可以向`class`中随意添加不参与数据流（比如计时器ID）的额外字段  
+  ```jsx harmony
+  componentDidMount() {
+    this.timerId = setInterval(
+      ()=> // doSomething...,
+      1000
+    )
+  }
+  ```
+* 关于`setState`你应该了解三件事：  
+  1. 不要直接修改`state`
+  2. `state`的更新可能是异步的
+      ```jsx harmony
+      // 正确的获取更新后state和props方式：
+      // 最新的state和props
+      this.setState((state,props) => ({
+         counter: state.counter + props.increment
+      }))
+      ```
+  3. `state`的更新会被合并
