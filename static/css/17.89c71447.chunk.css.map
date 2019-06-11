@@ -1,0 +1,1 @@
+{"version":3,"sources":["/Users/wangkai/workSpace/personalCode/study01/reactJs/react-example/src/views/reactDemo/01comment/CommentForm.scss"],"names":[],"mappings":"AAAA,cACE,YAAa,CACb,qBACE,eAAgB","file":"17.89c71447.chunk.css","sourcesContent":[".comment-form {\n  padding: 12px;\n  &-submit {\n    margin-top: 12px;\n  }\n}\n"]}
