@@ -1,1 +1,0 @@
-{"version":3,"sources":["/Users/wangkai/workSpace/personalCode/study01/reactJs/react-example/src/views/reactDemo/01comment/CommentList.scss"],"names":[],"mappings":"AAAA,cACE,gBAAiB,CACjB,YAAa","file":"18.005f0d53.chunk.css","sourcesContent":[".comment-list {\n  margin-top: -12px;\n  padding: 12px;\n}\n"]}
