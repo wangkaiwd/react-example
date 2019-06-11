@@ -19,6 +19,12 @@ const menuList = [
         title: 'NestedRouting',
         component: lazyLoading('routerDemo/NestedRouting'),
       },
+      {
+        key: '/reactRouter/routeConfig',
+        icon: '',
+        title: 'RouteConfig',
+        component: lazyLoading('routerDemo/RouteConfig'),
+      },
     ],
   },
   {
