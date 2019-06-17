@@ -88,3 +88,12 @@
       }))
       ```
   3. `state`的更新会被合并
+
+#### 事件处理
+* `React`你不能通过返回`false`的方式阻止默认行为。你必须显示的使用`preventDefault`
+* 绑定`this`时推荐使用`public class fields`语法，在`Create React App`中默认启用该语法
+  ```jsx harmony
+  handleClick = () => {
+    console.log('this is:',this)
+  }
+  ```
