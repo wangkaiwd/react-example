@@ -1,10 +1,2 @@
-//https://github.com/csstools/normalize.css
-// create-react-app自己内置了css-normalize来确保不同浏览器上的样式统一
-@import-normalize ;
 @import "reset";
-body {
-  line-height: 1.15;
-}
-.app {
-  height: 100vh;
-}
+@import-normalize ;

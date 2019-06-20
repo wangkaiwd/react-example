@@ -1,4 +1,5 @@
 const CracoAntDesignPlugin = require('craco-antd');
+const sassResourcesLoader = require('craco-sass-resources-loader');
 const WebpackBar = require('webpackbar');
 const path = require('path');
 const { whenDev, whenProd } = require('@craco/craco');
@@ -6,19 +7,6 @@ const absPath = dir => path.resolve(__dirname, `./src/${dir}`);
 module.exports = {
   eslint: {
     enable: false
-  },
-  // style: {
-  //   sass: {
-  //     loaderOptions: {
-  //       includePaths: [absPath('assets/styles/mixins.scss')]
-  //     }
-  //   },
-  // },
-  babel: {
-    plugins: [
-      ['@babel/plugin-proposal-decorators', { legacy: true }],
-      ['@babel/plugin-proposal-class-properties', { loose: true }]
-    ]
   },
   webpack: {
     entry: {
@@ -45,5 +33,16 @@ module.exports = {
   devServer: {
     open: false
   },
-  plugins: [{ plugin: CracoAntDesignPlugin }]
+  plugins: [
+    { plugin: CracoAntDesignPlugin },
+    {
+      plugin: sassResourcesLoader,
+      options: {
+        resources: [
+          absPath('assets/styles/mixins.scss'),
+          absPath('assets/styles/var.scss')
+        ],
+      },
+    },
+  ]
 };
