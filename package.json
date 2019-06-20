@@ -1,0 +1,45 @@
+{
+  "name": "react-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^5.2.2",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.0.8",
+    "@types/react": "16.8.21",
+    "@types/react-dom": "16.8.4",
+    "antd": "^3.19.6",
+    "craco-antd": "^1.11.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.2"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "craco-sass-resources-loader": "^1.0.1",
+    "webpackbar": "^3.2.0"
+  }
+}
