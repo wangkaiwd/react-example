@@ -135,3 +135,32 @@
 * 如果某些数据可以由`props`或`state`推导得出，那么它就不应该存在于`state`中
 
 #### 组合和继承
+* `React`有十分强大的组合模式。我们推荐使用组合而非继承来实现组件间的代码重用
+* `React`通过`props.children`的形式实现默认插槽，而当你有许多插槽的时候，可以通过`props`来进行传递：  
+  ```jsx harmony
+  // 使用
+  <SplitPane left={<Contacts />} right={<Chat />}/>
+  // 实现
+  const SplitPane = (props) => {
+    return (
+      <div className="SplitPane">
+        <div className="SplitPane-left">
+          {props.left}
+        </div>
+        <div className="SplitPane-right">
+          {props.right}
+        </div>
+      </div>
+    )
+  }
+  ```
+* 这里的继承到底指什么并没有明白
+
+#### 代码分割
+* 在你的代码中引入代码分割的最佳方式是通过动态`import()`语法
+* `React.lazy`函数能让你像渲染常规组件一样处理动态引入(的组件)
+* `React.lazy`接受一个函数，这个函数需要动态调用`import()`。它必须返回一个`Promise`，该`Promise`需要`resolve`一个`default export`的`React`组件
+  ```jsx harmony
+  const OtherComponent = React.lazy(() => import('./OtherComponent'))
+  ```
+* `React.lazy`目前只支持默认导出(`default exports`)。如果你想被引入的模块使用命名导出(`named exports`)，你可以创建一个中间模块，来重新导出为默认模块
